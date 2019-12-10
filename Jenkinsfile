@@ -1,13 +1,12 @@
 pipeline {
   agent {
-    docker {
-      image 'insideo/jre8'
-      args '-p 22222:22222'
+    dockerfile {
+      filename 'Dockerfile'
     }
 
   }
   stages {
-    stage('') {
+    stage('error') {
       steps {
         git(url: 'https://github.com/knight-apple/picBed.git', branch: 'master', changelog: true, poll: true)
       }

@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/auth/auth.iml" filepath="$PROJECT_DIR$/auth/auth.iml" />
-      <module fileurl="file://$PROJECT_DIR$/auth/auth-interface/auth-interface.iml" filepath="$PROJECT_DIR$/auth/auth-interface/auth-interface.iml" />
-      <module fileurl="file://$PROJECT_DIR$/auth/auth-provider/auth-provider.iml" filepath="$PROJECT_DIR$/auth/auth-provider/auth-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo.iml" filepath="$PROJECT_DIR$/dubbo/dubbo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/imageService/imageService.iml" filepath="$PROJECT_DIR$/imageService/imageService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/imageService/imageService-interface/imageService-interface.iml" filepath="$PROJECT_DIR$/imageService/imageService-interface/imageService-interface.iml" />
-      <module fileurl="file://$PROJECT_DIR$/imageService/imageService-provider/imageService-provider.iml" filepath="$PROJECT_DIR$/imageService/imageService-provider/imageService-provider.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/picBed.iml" filepath="$PROJECT_DIR$/.idea/picBed.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fileService/fileService.iml" filepath="$PROJECT_DIR$/fileService/fileService.iml" />
     </modules>
   </component>
 </project>

@@ -11,13 +11,19 @@
     <modules>
         <module>imageService</module>
         <module>auth</module>
+        <module>ui</module>
+        <module>fileService</module>
+        <module>photoService</module>
+        <module>configCenter</module>
+        <module>userService</module>
+        <module>restfulApi</module>
+        <module>fileService</module>
+        <module>fileService</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.5.RELEASE</version>
+        <version>2.1.8.RELEASE</version>
         <relativePath/>
     </parent>
-
-
 </project>

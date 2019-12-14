@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ui" />
+        <module name="imageService-interface" />
+        <module name="auth-interface" />
+        <module name="dubbo-admin-server" />
+        <module name="fileService-interface" />
+        <module name="userService-interface" />
+        <module name="photo-provider" />
+        <module name="dubbo-admin-ui" />
+        <module name="photo-interface" />
+        <module name="dubbo-admin-distribution" />
+        <module name="userService-provider" />
+        <module name="configCenter-interface" />
+        <module name="configCenter-provider" />
+        <module name="restfulApi-interface" />
+        <module name="imageService-provider" />
+        <module name="auth-provider" />
+        <module name="restfulApi-consumer" />
+        <module name="fileService-provider" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="adminApi" target="1.8" />
+      <module name="adminApi-consumer" target="1.8" />
+      <module name="adminApi-interface" target="1.8" />
+      <module name="dubbo" target="1.8" />
+      <module name="dubbo-interface" target="1.8" />
+      <module name="dubbo-provider" target="1.8" />
+      <module name="fileService" target="1.8" />
+      <module name="fileService-consumer" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="adminApi-consumer" options="-parameters" />
+      <module name="adminApi-interface" options="-parameters" />
+      <module name="auth-interface" options="-parameters" />
+      <module name="auth-provider" options="-parameters" />
+      <module name="configCenter-interface" options="-parameters" />
+      <module name="configCenter-provider" options="-parameters" />
+      <module name="dubbo" options="" />
+      <module name="dubbo-interface" options="-parameters" />
+      <module name="dubbo-provider" options="-parameters" />
+      <module name="fileService" options="" />
+      <module name="fileService-consumer" options="-parameters" />
+      <module name="fileService-interface" options="-parameters" />
+      <module name="fileService-provider" options="-parameters" />
+      <module name="imageService-interface" options="-parameters" />
+      <module name="imageService-provider" options="-parameters" />
+      <module name="photo-interface" options="-parameters" />
+      <module name="photo-provider" options="-parameters" />
+      <module name="restfulApi-consumer" options="-parameters" />
+      <module name="restfulApi-interface" options="-parameters" />
+      <module name="ui" options="-parameters" />
+      <module name="userService-interface" options="-parameters" />
+      <module name="userService-provider" options="-parameters" />
+    </option>
+  </component>
+</project>

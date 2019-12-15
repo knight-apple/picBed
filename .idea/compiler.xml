@@ -6,21 +6,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="test-provider" />
         <module name="ui" />
         <module name="imageService-interface" />
         <module name="auth-interface" />
+        <module name="test-interface" />
         <module name="dubbo-admin-server" />
         <module name="fileService-interface" />
         <module name="userService-interface" />
         <module name="photo-provider" />
+        <module name="test-consumer" />
         <module name="dubbo-admin-ui" />
         <module name="photo-interface" />
         <module name="dubbo-admin-distribution" />
         <module name="userService-provider" />
+        <module name="dataSource" />
         <module name="configCenter-interface" />
+        <module name="zkui" />
         <module name="configCenter-provider" />
         <module name="restfulApi-interface" />
         <module name="imageService-provider" />
+        <module name="zkui (2)" />
+        <module name="core" />
         <module name="auth-provider" />
         <module name="restfulApi-consumer" />
         <module name="fileService-provider" />
@@ -30,11 +37,16 @@
       <module name="adminApi" target="1.8" />
       <module name="adminApi-consumer" target="1.8" />
       <module name="adminApi-interface" target="1.8" />
+      <module name="consumertest" target="1.8" />
+      <module name="consumertest-consumer" target="1.8" />
+      <module name="consumertest-interface" target="1.8" />
+      <module name="consumertest-provider" target="1.8" />
       <module name="dubbo" target="1.8" />
       <module name="dubbo-interface" target="1.8" />
       <module name="dubbo-provider" target="1.8" />
       <module name="fileService" target="1.8" />
       <module name="fileService-consumer" target="1.8" />
+      <module name="zkui (2)" target="1.7" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -45,6 +57,10 @@
       <module name="auth-provider" options="-parameters" />
       <module name="configCenter-interface" options="-parameters" />
       <module name="configCenter-provider" options="-parameters" />
+      <module name="consumertest-consumer" options="-parameters" />
+      <module name="consumertest-interface" options="-parameters" />
+      <module name="consumertest-provider" options="-parameters" />
+      <module name="dataSource" options="-parameters" />
       <module name="dubbo" options="" />
       <module name="dubbo-interface" options="-parameters" />
       <module name="dubbo-provider" options="-parameters" />
@@ -58,6 +74,9 @@
       <module name="photo-provider" options="-parameters" />
       <module name="restfulApi-consumer" options="-parameters" />
       <module name="restfulApi-interface" options="-parameters" />
+      <module name="test-consumer" options="-parameters" />
+      <module name="test-interface" options="-parameters" />
+      <module name="test-provider" options="-parameters" />
       <module name="ui" options="-parameters" />
       <module name="userService-interface" options="-parameters" />
       <module name="userService-provider" options="-parameters" />

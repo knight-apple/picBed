@@ -8,6 +8,9 @@
     <artifactId>picBed</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <spring.boot.version>2.1.8.RELEASE</spring.boot.version>
+    </properties>
     <modules>
         <module>imageService</module>
         <module>auth</module>
@@ -19,6 +22,8 @@
         <module>restfulApi</module>
         <module>fileService</module>
         <module>fileService</module>
+        <module>test</module>
+        <module>dataSource</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -31,6 +36,19 @@
             <groupId>com.ctrip.framework.apollo</groupId>
             <artifactId>apollo-client</artifactId>
             <version>1.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 </project>

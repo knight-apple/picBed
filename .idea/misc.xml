@@ -10,12 +10,17 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/adminApi/adminApi-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/common/dubbo-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/common/zkui-master/pom.xml" />
+        <option value="$PROJECT_DIR$/common/zkui/pom.xml" />
+        <option value="$PROJECT_DIR$/common/pom.xml" />
+        <option value="$PROJECT_DIR$/common/core/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/adminApi/adminApi-interface/pom.xml" />
         <option value="$PROJECT_DIR$/adminApi/pom.xml" />
+        <option value="$PROJECT_DIR$/consumertest/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo/dubbo-interface/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo/dubbo-provider/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo/pom.xml" />

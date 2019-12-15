@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://172.16.56.31:33062/picBed</property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+      <mapping class="cn.knightapple.dataSource.entity.TImagesEntitys"/>
+    <mapping resource="mapper/TImagesEntitys.hbm.xml"/>
+    <mapping class="cn.knightapple.dataSource.entity.TPhotosEntitys"/>
+    <mapping resource="mapper/TPhotosEntitys.hbm.xml"/>
+    <mapping class="cn.knightapple.dataSource.entity.TRouteMapEntitys"/>
+    <mapping resource="mapper/TRouteMapEntitys.hbm.xml"/>
+    <mapping class="cn.knightapple.dataSource.entity.TSecurityGroupEntitys"/>
+    <mapping resource="mapper/TSecurityGroupEntitys.hbm.xml"/>
+    <mapping resource="mapper/TUsersEntitys.hbm.xml"/>
+    <mapping class="cn.knightapple.dataSource.entity.TUsersEntitys"/>
+      <mapping resource="mapper/TGroupViewEntitys.hbm.xml"/>
+      <mapping class="cn.knightapple.dataSource.entity.TGroupViewEntitys"/>
+      <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>

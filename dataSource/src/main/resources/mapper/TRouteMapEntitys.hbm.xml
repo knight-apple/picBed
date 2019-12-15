@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.knightapple.dataSource.entity.TRouteMapEntitys" table="routeMap" schema="picBed">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="realUrl">
+            <column name="realUrl" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="route">
+            <column name="route" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

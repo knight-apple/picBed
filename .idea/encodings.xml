@@ -15,9 +15,15 @@
     <file url="file://$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-distribution" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-ui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common/zkui" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/configCenter" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/configCenter/configCenter-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/configCenter/configCenter-provider" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/consumertest" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/consumertest/consumertest-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/consumertest/consumertest-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/consumertest/consumertest-provider" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dataSource" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/fileService" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/fileService" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/fileService" charset="UTF-8" />
@@ -35,6 +41,10 @@
     <file url="file://$PROJECT_DIR$/restfulApi" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/restfulApi/restfulApi-consumer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/restfulApi/restfulApi-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/test-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/test-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/test-provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ui" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/userService" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/userService/userService-interface" charset="UTF-8" />

@@ -1,0 +1,65 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"-->
+<!--       xmlns:tx="http://www.springframework.org/schema/tx"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--       http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--       http://www.springframework.org/schema/data/jpa-->
+<!--       https://www.springframework.org/schema/data/jpa/spring-jpa.xsd-->
+<!--       http://www.springframework.org/schema/tx-->
+<!--       http://www.springframework.org/schema/tx/spring-tx.xsd">-->
+<!--    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
+<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
+<!--        &lt;!&ndash; 基本属性 url、user、password &ndash;&gt;-->
+<!--        <property name="url" value="jdbc:mysql://172.16.56.31:33062/picBed"/>-->
+<!--        <property name="username" value="root"/>-->
+<!--        <property name="password" value="123456"/>-->
+
+<!--        &lt;!&ndash; 配置初始化大小、最小、最大 &ndash;&gt;-->
+<!--        <property name="initialSize" value="1"/>-->
+<!--        <property name="minIdle" value="1"/>-->
+<!--        <property name="maxActive" value="20"/>-->
+
+<!--        &lt;!&ndash; 配置获取连接等待超时的时间 &ndash;&gt;-->
+<!--        <property name="maxWait" value="60000"/>-->
+
+<!--        &lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+<!--        <property name="timeBetweenEvictionRunsMillis" value="60000"/>-->
+
+<!--        &lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+<!--        <property name="minEvictableIdleTimeMillis" value="300000"/>-->
+
+<!--        <property name="validationQuery" value="SELECT 'x'"/>-->
+<!--        <property name="testWhileIdle" value="true"/>-->
+<!--        <property name="testOnBorrow" value="false"/>-->
+<!--        <property name="testOnReturn" value="false"/>-->
+
+<!--        &lt;!&ndash; 打开PSCache，并且指定每个连接上PSCache的大小 &ndash;&gt;-->
+<!--        <property name="poolPreparedStatements" value="false"/>-->
+<!--        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>-->
+
+<!--        &lt;!&ndash; 配置监控统计拦截的filters &ndash;&gt;-->
+<!--        <property name="filters" value="stat"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">-->
+<!--        <property name="dataSource" ref="dataSource"/>-->
+<!--        <property name="packagesToScan" value="cn.knightapple.dataSource.entity"/>-->
+<!--        <property name="jpaVendorAdapter">-->
+<!--            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>-->
+<!--        </property>-->
+<!--        <property name="jpaProperties">-->
+<!--            <props>-->
+<!--                <prop key="hibernate.show_sql">true</prop>-->
+<!--                <prop key="hibernate.format_sql">true</prop>-->
+<!--                <prop key="hibernate.hbm2ddl.auto">update</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">-->
+<!--        <property name="entityManagerFactory" ref="entityManagerFactory"/>-->
+<!--    </bean>-->
+<!--    <tx:annotation-driven transaction-manager="transactionManager"/>-->
+<!--    <jpa:repositories base-package="cn.knightapple.dataSource" entity-manager-factory-ref="entityManagerFactory"/>-->
+<!--</beans>-->

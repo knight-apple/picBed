@@ -6,6 +6,7 @@ import cn.knightapple.dataSource.dao.UserDao;
 import cn.knightapple.dataSource.entity.TUsersEntitys;
 import cn.knightapple.dto.UserInfoDto;
 import cn.knightapple.service.UserService;
+import org.apache.dubbo.config.annotation.Reference;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -30,7 +31,7 @@ import java.util.Set;
 @Component
 public class MyRealm extends AuthorizingRealm {
 
-    @Autowired
+    @Reference
     private UserService userService;
     @Autowired
     private UserDao userDao;

@@ -17,8 +17,8 @@ public interface SecutityGroupDao extends JpaRepository<TSecurityGroupEntitys, I
             "on images.photoId = p.id " +
             "where images.id=?2) " +
             "and refererDomain=?1", nativeQuery = true)
-    Integer countReferenceByImageId(String reference, Integer imageId);
+    public Integer countReferenceByImageId(String reference, Integer imageId);
 
 
-
+    public void deleteByGroupIdEquals(Integer groupId);
 }

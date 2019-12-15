@@ -14,6 +14,9 @@
         <property name="title">
             <column name="title" sql-type="varchar(50)" length="50"/>
         </property>
+        <property name="groupId">
+            <column name="securityGroupId" sql-type="int(11)"/>
+        </property>
         <many-to-one name="usersByUserId" class="cn.knightapple.dataSource.entity.TUsersEntitys">
             <column name="userId"/>
         </many-to-one>

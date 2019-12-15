@@ -17,4 +17,11 @@ public interface RouteMapDao extends JpaRepository<TRouteMapEntitys, Integer> {
             " and `securityGroup`.refererDomain= ?2"
             , nativeQuery = true)
     public Integer countRouteByReferer(String route, String referer);
+
+    @Query(value = "delete from `routeMap` " +
+            "where `routeMap`.imageId in " +
+            "(select imageId from `images` " +
+            "where photoId = ?1)"
+            , nativeQuery = true)
+    public void deleteAllByPhotoId(Integer photoId);
 }

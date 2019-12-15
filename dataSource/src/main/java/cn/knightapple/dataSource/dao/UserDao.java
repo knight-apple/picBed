@@ -10,7 +10,4 @@ import java.util.Optional;
 public interface UserDao extends JpaRepository<TUsersEntitys,Integer> {
     //登录
     TUsersEntitys findOneByEmailEqualsAndPasswordEquals(String email,String password);
-
-    @Override
-    Optional<TUsersEntitys> findById(Integer integer);
 }

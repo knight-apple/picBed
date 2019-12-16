@@ -1,10 +1,13 @@
 package cn.knightapple.photo.provider;
 
 import cn.knightapple.dataSource.dao.*;
+import cn.knightapple.dataSource.entity.TImagesEntitys;
 import cn.knightapple.dataSource.entity.TPhotosEntitys;
 import cn.knightapple.dataSource.entity.TUsersEntitys;
+import cn.knightapple.fileService.service.FileService;
 import cn.knightapple.photo.dto.PhotoInfoDto;
 import cn.knightapple.photo.service.PhotoService;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -23,6 +26,8 @@ public class PhotoServiceImpl implements PhotoService {
     ImageDao imageDao;
     @Autowired
     RouteMapDao routeMapDao;
+    @Reference
+    FileService fileService;
 
     @Override
     public PhotoInfoDto addPhoto(Integer userId, String intro, String title) {
@@ -44,6 +49,13 @@ public class PhotoServiceImpl implements PhotoService {
             return false;
         } else {
             TPhotosEntitys tPhotosEntitys = tPhotosEntitysOptional.get();
+            List<TImagesEntitys> imagesEntitysList = imageDao.findAllByPhotosByPhotoIdEqualsOrderByCreateTimeDesc(photoId);
+            List<String> routeList = new ArrayList<>();
+            imagesEntitysList.forEach((e) -> {
+                routeList.add(e.getRoute());
+                routeList.add(e.getZipRoute());
+            });
+            fileService.deleteImageByPhotoId(routeList);
             routeMapDao.deleteAllByPhotoId(tPhotosEntitys.getId());
             imageDao.deleteAllByPhotosByPhotoIdEquals(tPhotosEntitys);
             secutityGroupDao.deleteByGroupIdEquals(tPhotosEntitys.getGroupId());

@@ -25,6 +25,7 @@
         <option value="$PROJECT_DIR$/dubbo/dubbo-provider/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo/pom.xml" />
         <option value="$PROJECT_DIR$/fileService/fileService-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/fileService/fileService-provider/nginx/pom.xml" />
         <option value="$PROJECT_DIR$/fileService/pom.xml" />
       </set>
     </option>

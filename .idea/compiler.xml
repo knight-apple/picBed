@@ -28,9 +28,9 @@
         <module name="imageService-provider" />
         <module name="zkui (2)" />
         <module name="core" />
+        <module name="nginx" />
         <module name="auth-provider" />
         <module name="restfulApi-consumer" />
-        <module name="fileService-provider" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -67,9 +67,10 @@
       <module name="fileService" options="" />
       <module name="fileService-consumer" options="-parameters" />
       <module name="fileService-interface" options="-parameters" />
-      <module name="fileService-provider" options="-parameters" />
+      <module name="fileService-provider" options="" />
       <module name="imageService-interface" options="-parameters" />
       <module name="imageService-provider" options="-parameters" />
+      <module name="nginx" options="-parameters" />
       <module name="photo-interface" options="-parameters" />
       <module name="photo-provider" options="-parameters" />
       <module name="restfulApi-consumer" options="-parameters" />

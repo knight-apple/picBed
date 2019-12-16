@@ -32,6 +32,8 @@
     <file url="file://$PROJECT_DIR$/fileService/fileService-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/fileService/fileService-provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/fileService/fileService-provider" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fileService/fileService-provider/nginx" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fileService/nginx" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/imageService" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/imageService/imageService-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/imageService/imageService-provider" charset="UTF-8" />

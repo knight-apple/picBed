@@ -2,10 +2,12 @@ package cn.knightapple.imageService.dto;
 
 import cn.knightapple.dataSource.entity.TImagesEntitys;
 import cn.knightapple.dataSource.entity.TPhotosEntitys;
+import lombok.Getter;
+import lombok.Setter;
 
 
-//需要添加的数据有
-//路由,压缩路由,创建时间,用户id
+@Setter
+@Getter
 public class ImageSaveDto {
     private Integer id;
     //    private String route;
@@ -17,6 +19,14 @@ public class ImageSaveDto {
     private Integer photoId;
 
     //    private Integer userId;
+
+    /**
+     * 需要添加的数据有
+     * 路由,压缩路由,创建时间,用户id
+     * @param imagesEntitys 要负载的图片实体实例
+     * @param isUpdate 是否为更新模式
+     * @return
+     */
     public TImagesEntitys toEntity(TImagesEntitys imagesEntitys, boolean isUpdate) {
         if (isUpdate && id != null && !id.equals(0)) {
             imagesEntitys.setId(id);

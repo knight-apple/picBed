@@ -9,6 +9,7 @@ public class TRouteMapEntitys {
     private int id;
     private String realUrl;
     private String route;
+    private Integer imageId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +33,16 @@ public class TRouteMapEntitys {
     }
 
     @Basic
+    @Column(name = "imageId", nullable = true)
+    public Integer getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(Integer imageId) {
+        this.imageId = imageId;
+    }
+
+    @Basic
     @Column(name = "route", nullable = true, length = 50)
     public String getRoute() {
         return route;
@@ -48,11 +59,12 @@ public class TRouteMapEntitys {
         TRouteMapEntitys that = (TRouteMapEntitys) o;
         return id == that.id &&
                 Objects.equals(realUrl, that.realUrl) &&
+                Objects.equals(imageId, that.imageId) &&
                 Objects.equals(route, that.route);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, realUrl, route);
+        return Objects.hash(id, realUrl, route,imageId);
     }
 }

@@ -24,4 +24,7 @@ public interface RouteMapDao extends JpaRepository<TRouteMapEntitys, Integer> {
             "where photoId = ?1)"
             , nativeQuery = true)
     public void deleteAllByPhotoId(Integer photoId);
+
+    public void deleteAllByImageIdEquals(Integer imageId);
+    public void deleteByRouteEquals(String route);
 }

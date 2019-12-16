@@ -14,4 +14,6 @@ public interface ImageDao extends JpaRepository<TImagesEntitys,Integer> {
     List<TImagesEntitys> findAllByPhotosByPhotoIdEqualsOrderByCreateTimeDesc(Integer photoId);
 
     void deleteAllByPhotosByPhotoIdEquals(TPhotosEntitys tPhotosEntitys);
+
+    long countByRouteEquals(String route);
 }

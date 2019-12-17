@@ -44,13 +44,13 @@ public class UserController {
     @RequestMapping(value = "/updatePassword", method = RequestMethod.PATCH)
     @UserLoginToken
     public CommonResult updatePassword(String password, HttpServletRequest request, HttpServletResponse response) {
-        String token = request.getHeader("token");
+        String token = request.getHeader("Authorization");
         UserInfoDto userInfoDto = JwtUtil.getUserInfo(token);
         if (UserInfoDto.isEmpty(userInfoDto)) {
             return CommonResult.failed();
         }
         if (userService.updatePassword(userInfoDto.getId(), password)) {
-            Cookie cookietoken = new Cookie("token",JwtUtil.sign(userInfoDto, password));
+            Cookie cookietoken = new Cookie("Authorization",JwtUtil.sign(userInfoDto, password));
             response.addCookie(cookietoken);
             return CommonResult.success("更新成功");
         } else {

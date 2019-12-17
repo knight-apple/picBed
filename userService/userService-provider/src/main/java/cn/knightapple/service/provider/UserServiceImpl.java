@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInfoDto findUserById(Integer userId) {
         Optional<TUsersEntitys> userInfoDtoOptional = userDao.findById(userId);
-        if (userInfoDtoOptional.equals(Optional.empty())) {
+        if (!userInfoDtoOptional.equals(Optional.empty())) {
             return UserInfoDto.parseDto(userInfoDtoOptional.get());
         }
         return UserInfoDto.empty();
@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getPasswordById(Integer userId){
         Optional<TUsersEntitys> userInfoDtoOptional = userDao.findById(userId);
-        if (userInfoDtoOptional.equals(Optional.empty())) {
+        if (!userInfoDtoOptional.equals(Optional.empty())) {
             return userInfoDtoOptional.get().getPassword();
         }
         return null;

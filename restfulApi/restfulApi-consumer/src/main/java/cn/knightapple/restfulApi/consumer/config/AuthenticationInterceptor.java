@@ -10,7 +10,8 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import jdk.nashorn.internal.ir.annotations.Reference;
+
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.HandlerMethod;
@@ -27,7 +28,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     UserService userService;
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
-        String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
+        String token = httpServletRequest.getHeader("Authorization");// 从 http 请求头中取出 token
         // 如果不是映射到方法直接通过
         if(!(object instanceof HandlerMethod)){
             return true;
@@ -53,6 +54,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 UserInfoDto userInfoDtoForToken;
                 try {
                     userInfoDtoForToken = JwtUtil.getUserInfo(token);
+                    if(UserInfoDto.isEmpty(userInfoDtoForToken))
+                        throw new RuntimeException("token错误,请重新登录");
                 } catch (JWTDecodeException j) {
                     throw new RuntimeException("401");
                 }

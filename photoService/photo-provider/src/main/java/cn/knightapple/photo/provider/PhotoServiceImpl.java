@@ -58,7 +58,7 @@ public class PhotoServiceImpl implements PhotoService {
             fileService.deleteImageByPhotoId(routeList);
             routeMapDao.deleteAllByPhotoId(tPhotosEntitys.getId());
             imageDao.deleteAllByPhotosByPhotoIdEquals(tPhotosEntitys);
-            secutityGroupDao.deleteByGroupIdEquals(tPhotosEntitys.getGroupId());
+            secutityGroupDao.deleteByGroupIdEquals(tPhotosEntitys.getSecurityGroupId());
             photoDao.delete(tPhotosEntitys);
             return true;
         }

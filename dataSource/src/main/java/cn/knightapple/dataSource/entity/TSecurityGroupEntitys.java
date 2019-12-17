@@ -44,7 +44,7 @@ public class TSecurityGroupEntitys {
     }
 
     @Basic
-    @Column(name = "groupName", nullable = false, length = 45)
+    @Column(name = "groupName", nullable = true, length = 45)
     public String getGroupName() {
         return groupName;
     }

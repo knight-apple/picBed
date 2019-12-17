@@ -17,12 +17,10 @@
         <module>ui</module>
         <module>fileService</module>
         <module>photoService</module>
-        <module>configCenter</module>
         <module>userService</module>
         <module>restfulApi</module>
         <module>fileService</module>
         <module>fileService</module>
-        <module>test</module>
         <module>dataSource</module>
     </modules>
     <parent>
@@ -50,5 +48,15 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>cn.knightapple</groupId>-->
+<!--            <artifactId>dataSource</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>cn.knightapple</groupId>-->
+<!--            <artifactId>photo-interface</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
     </dependencies>
 </project>

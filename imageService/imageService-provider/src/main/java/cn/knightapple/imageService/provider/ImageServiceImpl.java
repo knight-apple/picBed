@@ -55,6 +55,7 @@ public class ImageServiceImpl implements ImageService {
         return false;
     }
 
+    @Override
     public boolean deleteImage(Integer imageId) {
         Optional<TImagesEntitys> tImagesEntitysOptional = imageDao.findById(imageId);
         if (tImagesEntitysOptional.equals(Optional.empty())) {
@@ -66,6 +67,7 @@ public class ImageServiceImpl implements ImageService {
         return true;
     }
 
+    @Override
     public boolean updateImage(ImageSaveDto imageSaveDto) {
         Optional<TImagesEntitys> tImagesEntitysOptional = imageDao.findById(imageSaveDto.getId());
         if (tImagesEntitysOptional.equals(Optional.empty())) {
@@ -77,7 +79,7 @@ public class ImageServiceImpl implements ImageService {
         return true;
     }
 
-
+    @Override
     public ImageInfoDto getImageInfoById(Integer imageId) {
         Optional<TImagesEntitys> tImagesEntitysOptional = imageDao.findById(imageId);
         if (tImagesEntitysOptional.equals(Optional.empty())) {
@@ -88,6 +90,7 @@ public class ImageServiceImpl implements ImageService {
         return imageInfoDto;
     }
 
+    @Override
     public List<ImageInfoDto> getImageListByPhotoId(Integer photoId) {
         List<TImagesEntitys> imagesEntitysList = imageDao.findAllByPhotosByPhotoIdEqualsOrderByCreateTimeDesc(photoId);
         List<ImageInfoDto> imageInfoDtoList = new ArrayList<>();
@@ -97,6 +100,7 @@ public class ImageServiceImpl implements ImageService {
         return imageInfoDtoList;
     }
 
+    @Override
     public List<ImageInfoDto> getImageListByUserId(Integer userId) {
         List<TImagesEntitys> imagesEntitysList = imageDao.findByUsersByUserIdEqualsOrderByCreateTimeDesc(userId);
         List<ImageInfoDto> imageInfoDtoList = new ArrayList<>();

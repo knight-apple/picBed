@@ -1,8 +1,13 @@
 package cn.knightapple.service;
 
 import cn.knightapple.dto.UserInfoDto;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface UserService {
+    UserInfoDto updateUser(UserInfoDto userInfoDto);
+
+    boolean updatePassword(Integer userId, String newPassword);
+
     /**
      * 使用email和password来查找用户,
      * 如果用户存在,则返回该用户的信息,
@@ -22,7 +27,10 @@ public interface UserService {
      * @param userInfoDto 用户信息
      * @return 返回添加成功后的用户信息
      */
-    public UserInfoDto addUser(UserInfoDto userInfoDto);
+    @Transactional
+    public UserInfoDto addUser(UserInfoDto userInfoDto,String password);
 
     public UserInfoDto findUserById(Integer userId);
+
+    String getPasswordById(Integer userId);
 }

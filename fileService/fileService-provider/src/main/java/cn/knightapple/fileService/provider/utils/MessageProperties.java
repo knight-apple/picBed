@@ -2,22 +2,34 @@ package cn.knightapple.fileService.provider.utils;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @Component
-@PropertySource(value = {"classpath:file-upload.properties"})
+@PropertySource(value = "")
 public class MessageProperties {
-    @Value("${message.fileSize}")
-    private long fileSize;  //压缩大小
-    @Value("${message.scaleRatio}")
-    private double scaleRatio; //压缩比例
-    @Value("${message.upPath}")
-    private String upPath; //保存路径
-    @Value("${message.imageType}")
-    private String imageType; //图片类型
+    @Autowired
+    Environment environment;
+
+    public double getScaleRatio() {
+        return Double.parseDouble(environment.getProperty("message.scaleRatio"));
+    }
+
+    public long getFileSize() {
+        return Long.parseLong(environment.getProperty("message.fileSize"));
+    }
+
+    public String getImageType() {
+        return environment.getProperty("message.imageType");
+    }
+
+    public String getUpPath() {
+        return environment.getProperty("message.upPath");
+    }
 }

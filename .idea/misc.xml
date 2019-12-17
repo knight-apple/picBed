@@ -13,13 +13,14 @@
         <option value="$PROJECT_DIR$/common/zkui-master/pom.xml" />
         <option value="$PROJECT_DIR$/common/zkui/pom.xml" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
-        <option value="$PROJECT_DIR$/common/core/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/adminApi/adminApi-interface/pom.xml" />
         <option value="$PROJECT_DIR$/adminApi/pom.xml" />
+        <option value="$PROJECT_DIR$/auth/auth-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/configCenter/pom.xml" />
         <option value="$PROJECT_DIR$/consumertest/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo/dubbo-interface/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo/dubbo-provider/pom.xml" />
@@ -27,6 +28,8 @@
         <option value="$PROJECT_DIR$/fileService/fileService-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/fileService/fileService-provider/nginx/pom.xml" />
         <option value="$PROJECT_DIR$/fileService/pom.xml" />
+        <option value="$PROJECT_DIR$/restfulApi/restfulApi-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/test/pom.xml" />
       </set>
     </option>
   </component>

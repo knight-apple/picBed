@@ -15,6 +15,35 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     /**
+     * 更新用户信息,不包括密码
+     *
+     * @param userInfoDto 用户的信息dto
+     * @return 更新后的结果
+     */
+    @Override
+    public UserInfoDto updateUser(UserInfoDto userInfoDto) {
+        Optional<TUsersEntitys> tUsersEntitysOptional = userDao.findById(userInfoDto.getId());
+        if (tUsersEntitysOptional.equals(Optional.empty())) {
+            return UserInfoDto.empty();
+        }
+        TUsersEntitys tUsersEntitys = tUsersEntitysOptional.get();
+        tUsersEntitys = userInfoDto.toEntity(tUsersEntitys);
+        return UserInfoDto.parseDto(tUsersEntitys);
+    }
+
+    @Override
+    public boolean updatePassword(Integer userId, String newPassword) {
+        Optional<TUsersEntitys> tUsersEntitysOptional = userDao.findById(userId);
+        if (tUsersEntitysOptional.equals(Optional.empty())) {
+            return false;
+        }
+        TUsersEntitys tUsersEntitys = tUsersEntitysOptional.get();
+        tUsersEntitys.setPassword(newPassword);
+        userDao.save(tUsersEntitys);
+        return true;
+    }
+
+    /**
      * 使用email和password来查找用户,
      * 如果用户存在,则返回该用户的信息,
      * 如果该用户不存在则返回UserInfoDto的empty()
@@ -42,10 +71,15 @@ public class UserServiceImpl implements UserService {
      * @return 返回添加成功后的用户信息
      */
     @Override
-    public UserInfoDto addUser(UserInfoDto userInfoDto) {
+    public UserInfoDto addUser(UserInfoDto userInfoDto, String password) {
         if (userInfoDto != null && userInfoDto.isFull()) {
             TUsersEntitys usersEntitys = new TUsersEntitys();
             usersEntitys = userInfoDto.toEntity(usersEntitys);
+            usersEntitys.setPassword(password);
+            Optional<TUsersEntitys> tUsersEntitysOptional = userDao.findByEmailEquals(userInfoDto.getEmail());
+            if (!tUsersEntitysOptional.equals(Optional.empty())) {
+                return UserInfoDto.empty();
+            }
             usersEntitys = userDao.save(usersEntitys);
             userInfoDto = UserInfoDto.parseDto(usersEntitys);
             return userInfoDto;
@@ -61,5 +95,14 @@ public class UserServiceImpl implements UserService {
             return UserInfoDto.parseDto(userInfoDtoOptional.get());
         }
         return UserInfoDto.empty();
+    }
+
+    @Override
+    public String getPasswordById(Integer userId){
+        Optional<TUsersEntitys> userInfoDtoOptional = userDao.findById(userId);
+        if (userInfoDtoOptional.equals(Optional.empty())) {
+            return userInfoDtoOptional.get().getPassword();
+        }
+        return null;
     }
 }

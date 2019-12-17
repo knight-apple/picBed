@@ -10,12 +10,17 @@ public class TPhotosEntitys {
     private String intro;
     private String title;
     private TUsersEntitys usersByUserId;
-    private Integer groupId;
+    private Integer securityGroupId;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setId(int id) {
@@ -24,9 +29,9 @@ public class TPhotosEntitys {
 
     @Basic
     @Column(name = "securityGroupId",nullable = false)
-    public Integer getGroupId(){return groupId;}
+    public Integer getSecurityGroupId(){return securityGroupId;}
 
-    public void setGroupId(Integer groupId){this.groupId = groupId;}
+    public void setSecurityGroupId(Integer groupId){this.securityGroupId = groupId;}
 
     @Basic
     @Column(name = "intro", nullable = true, length = 200)
@@ -56,12 +61,12 @@ public class TPhotosEntitys {
         return id == that.id &&
                 Objects.equals(intro, that.intro) &&
                 Objects.equals(title, that.title) &&
-                Objects.equals(groupId,that.groupId);
+                Objects.equals(securityGroupId,that.securityGroupId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, intro, title,groupId);
+        return Objects.hash(id, intro, title, securityGroupId);
     }
 
     @ManyToOne

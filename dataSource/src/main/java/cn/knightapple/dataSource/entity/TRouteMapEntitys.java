@@ -23,7 +23,7 @@ public class TRouteMapEntitys {
     }
 
     @Basic
-    @Column(name = "realUrl", nullable = true, length = 100)
+    @Column(name = "realUrl", nullable = false, length = 100)
     public String getRealUrl() {
         return realUrl;
     }
@@ -33,7 +33,7 @@ public class TRouteMapEntitys {
     }
 
     @Basic
-    @Column(name = "imageId", nullable = true)
+    @Column(name = "imageId", nullable = false)
     public Integer getImageId() {
         return imageId;
     }
@@ -43,7 +43,7 @@ public class TRouteMapEntitys {
     }
 
     @Basic
-    @Column(name = "route", nullable = true, length = 50)
+    @Column(name = "route", nullable = false, length = 50)
     public String getRoute() {
         return route;
     }

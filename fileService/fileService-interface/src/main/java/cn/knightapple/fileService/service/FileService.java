@@ -1,13 +1,14 @@
 package cn.knightapple.fileService.service;
 
 import cn.knightapple.dataSource.entity.TImagesEntitys;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface FileService {
 
-
+    @Transactional
     void saveImage(MultipartFile file, String route, Integer photoId, boolean isZip);
 
     /**
@@ -15,6 +16,7 @@ public interface FileService {
      *
      * @param routeList
      */
+    @Transactional
     void deleteImageByPhotoId(List<String> routeList);
 
     /**
@@ -22,5 +24,6 @@ public interface FileService {
      *
      * @param tImagesEntitys
      */
+    @Transactional
     void deleteImage(TImagesEntitys tImagesEntitys);
 }

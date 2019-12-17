@@ -35,12 +35,12 @@ public class DataConfig {
     @Bean("dataSource")
     public DruidDataSource getDataSource(Environment env) {
         DruidDataSource dataSource = new DruidDataSource();
-//        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl(env.getProperty("db.url"));
-//        dataSource.setUrl("jdbc:mysql://172.16.56.31:33062/picBed");
-        dataSource.setUsername(env.getProperty("db.username"));
-//        dataSource.setUsername("root");
-        dataSource.setPassword(env.getProperty("db.password"));
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+//        dataSource.setUrl(env.getProperty("db.url"));
+        dataSource.setUrl("jdbc:mysql://172.16.56.31:33062/picBed");
+//        dataSource.setUsername(env.getProperty("db.username"));
+        dataSource.setUsername("root");
+//        dataSource.setPassword(env.getProperty("db.password"));
         dataSource.setPassword("123456");
         dataSource.setInitialSize(1);
         dataSource.setMinIdle(1);
@@ -63,9 +63,8 @@ public class DataConfig {
         return dataSource;
     }
 
-    @Bean(name = "entityManagerFactory")
+    @Bean
     LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
-        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setDataSource(dataSource);
         entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter);

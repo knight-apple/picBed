@@ -3,7 +3,9 @@ package cn.knightapple.dataSource.dao;
 import cn.knightapple.dataSource.entity.TRouteMapEntitys;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RouteMapDao extends JpaRepository<TRouteMapEntitys, Integer> {
     @Query(value = "select realUrl from routeMap where route=?1", nativeQuery = true)
     public String getRealUrl(String route);

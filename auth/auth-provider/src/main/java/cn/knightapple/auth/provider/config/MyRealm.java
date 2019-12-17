@@ -16,12 +16,10 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * @author Mr.Li
@@ -29,13 +27,15 @@ import java.util.Set;
  * @desc
  **/
 @Component
+@ComponentScan(basePackages = {"cn.knightapple.dataSource.dao"})
 public class MyRealm extends AuthorizingRealm {
+
 
     @Reference
     private UserService userService;
-    @Autowired
-    private UserDao userDao;
 
+    @Autowired
+    UserDao userDao;
     /**
      * 必须重写此方法，不然Shiro会报错
      */

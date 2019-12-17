@@ -19,19 +19,19 @@ public class TPhotosEntitys {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
     @Basic
-    @Column(name = "securityGroupId",nullable = false)
-    public Integer getSecurityGroupId(){return securityGroupId;}
+    @Column(name = "securityGroupId", nullable = false)
+    public Integer getSecurityGroupId() {
+        return securityGroupId;
+    }
 
-    public void setSecurityGroupId(Integer groupId){this.securityGroupId = groupId;}
+    public void setSecurityGroupId(Integer groupId) {
+        this.securityGroupId = groupId;
+    }
 
     @Basic
     @Column(name = "intro", nullable = true, length = 200)
@@ -61,7 +61,7 @@ public class TPhotosEntitys {
         return id == that.id &&
                 Objects.equals(intro, that.intro) &&
                 Objects.equals(title, that.title) &&
-                Objects.equals(securityGroupId,that.securityGroupId);
+                Objects.equals(securityGroupId, that.securityGroupId);
     }
 
     @Override

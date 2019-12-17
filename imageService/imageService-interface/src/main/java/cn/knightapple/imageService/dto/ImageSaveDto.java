@@ -5,10 +5,12 @@ import cn.knightapple.dataSource.entity.TPhotosEntitys;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 
 @Setter
 @Getter
-public class ImageSaveDto {
+public class ImageSaveDto implements Serializable {
     private Integer id;
     //    private String route;
 //    private String zipRoute;

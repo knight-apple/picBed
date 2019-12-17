@@ -8,12 +8,14 @@ import cn.knightapple.fileService.service.FileService;
 import cn.knightapple.photo.dto.PhotoInfoDto;
 import cn.knightapple.photo.service.PhotoService;
 import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PhotoServiceImpl implements PhotoService {
 
     @Autowired
@@ -38,6 +40,8 @@ public class PhotoServiceImpl implements PhotoService {
         tPhotosEntitys.setIntro(intro);
         tPhotosEntitys.setTitle(title);
         tPhotosEntitys.setUsersByUserId(tUsersEntitys);
+        tPhotosEntitys.setSecurityGroupId(securityGroupId);
+
         PhotoInfoDto photoInfoDto = PhotoInfoDto.parseDto(photoDao.save(tPhotosEntitys));
         return photoInfoDto;
     }
@@ -49,7 +53,7 @@ public class PhotoServiceImpl implements PhotoService {
             return false;
         } else {
             TPhotosEntitys tPhotosEntitys = tPhotosEntitysOptional.get();
-            List<TImagesEntitys> imagesEntitysList = imageDao.findAllByPhotosByPhotoIdEqualsOrderByCreateTimeDesc(photoId);
+            List<TImagesEntitys> imagesEntitysList = imageDao.findAllByPhotosByPhotoIdEqualsOrderByCreateTimeDesc(tPhotosEntitys);
             List<String> routeList = new ArrayList<>();
             imagesEntitysList.forEach((e) -> {
                 routeList.add(e.getRoute());
@@ -81,6 +85,27 @@ public class PhotoServiceImpl implements PhotoService {
         List<PhotoInfoDto> photoInfoDtoList = new ArrayList<>();
         photosEntityList.forEach((e) -> photoInfoDtoList.add(PhotoInfoDto.parseDto(e)));
         return photoInfoDtoList;
+    }
+
+    @Override
+    public PhotoInfoDto getPhotoByPhotoId(Integer photoId) {
+        if (photoId != null) {
+            Optional<TPhotosEntitys> tPhotosEntitysOptional = photoDao.findById(photoId);
+            if (tPhotosEntitysOptional.equals(Optional.empty())) {
+                throw new IllegalArgumentException("该相册不存在");
+            }
+            return PhotoInfoDto.parseDto(tPhotosEntitysOptional.get());
+        }
+        throw new IllegalArgumentException("相册ID不能为空");
+    }
+
+    @Override
+    public boolean hasThePhoto(Integer photoId, Integer userId) {
+        Optional<TPhotosEntitys> tPhotosEntitysOptional = photoDao.findById(photoId);
+        if (!tPhotosEntitysOptional.equals(Optional.empty())) {
+            return Integer.compare(tPhotosEntitysOptional.get().getUsersByUserId().getId(),userId)==0;
+        }
+        throw new IllegalArgumentException("该图片不存在");
     }
 
 }

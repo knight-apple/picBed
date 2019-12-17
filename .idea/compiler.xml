@@ -6,7 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="auth-provider" />
         <module name="ui" />
         <module name="imageService-interface" />
         <module name="userService-interface" />
@@ -14,16 +13,15 @@
         <module name="dubbo-admin-server" />
         <module name="fileService-interface" />
         <module name="photo-provider" />
-        <module name="imageService-provider" />
         <module name="dubbo-admin-ui" />
         <module name="photo-interface" />
         <module name="dubbo-admin-distribution" />
         <module name="userService-provider" />
-        <module name="configCenter-interface" />
-        <module name="configCenter-provider" />
-        <module name="zkui (2)" />
-        <module name="dataSource" />
         <module name="restfulApi-consumer" />
+        <module name="imageService-provider" />
+        <module name="zkui (2)" />
+        <module name="auth-provider" />
+        <module name="dataSource" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

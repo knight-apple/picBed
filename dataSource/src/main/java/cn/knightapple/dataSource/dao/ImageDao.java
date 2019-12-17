@@ -13,7 +13,7 @@ public interface ImageDao extends JpaRepository<TImagesEntitys,Integer> {
 
     //通过用户id查找照片
     List<TImagesEntitys> findByUsersByUserIdEqualsOrderByCreateTimeDesc(Integer userId);
-    List<TImagesEntitys> findAllByPhotosByPhotoIdEqualsOrderByCreateTimeDesc(Integer photoId);
+    List<TImagesEntitys> findAllByPhotosByPhotoIdEqualsOrderByCreateTimeDesc(TPhotosEntitys tPhotosEntitys);
 
     void deleteAllByPhotosByPhotoIdEquals(TPhotosEntitys tPhotosEntitys);
 

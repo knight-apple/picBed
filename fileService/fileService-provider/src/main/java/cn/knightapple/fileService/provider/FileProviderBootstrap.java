@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @SpringBootConfiguration
 @EnableJpaRepositories(basePackages = {"cn.knightapple.dataSource.dao"})
-@ComponentScan(basePackages = {"cn.knightapple.dataSource"})
+@ComponentScan(basePackages = {"cn.knightapple.dataSource","cn.knightapple.fileService.provider"})
 public class FileProviderBootstrap {
 
     public static void main(String[] args) {

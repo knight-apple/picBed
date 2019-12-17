@@ -15,6 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableApolloConfig
 @SpringBootApplication
 @SpringBootConfiguration
+@ComponentScan(basePackages = {"cn.knightapple.dataSource.config"})
 //@EnableJpaRepositories(basePackages = {"cn.knightapple.dataSource.dao"})
 //@ComponentScan(basePackages = {"cn.knightapple.dataSource"})
 //@EntityScan(basePackages = {"cn.knightapple.dataSource.entity"})

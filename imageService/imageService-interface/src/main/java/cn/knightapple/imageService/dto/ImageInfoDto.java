@@ -4,11 +4,12 @@ import cn.knightapple.dataSource.entity.TImagesEntitys;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Getter
 @Setter
-public class ImageInfoDto {
+public class ImageInfoDto implements Serializable {
     private int id;
     private String route;
     private String title;

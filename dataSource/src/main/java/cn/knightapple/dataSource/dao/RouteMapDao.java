@@ -2,6 +2,7 @@ package cn.knightapple.dataSource.dao;
 
 import cn.knightapple.dataSource.entity.TRouteMapEntitys;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -20,10 +21,11 @@ public interface RouteMapDao extends JpaRepository<TRouteMapEntitys, Integer> {
             , nativeQuery = true)
     public Integer countRouteByReferer(String route, String referer);
 
-    @Query(value = "delete from `routeMap` " +
-            "where `routeMap`.imageId in " +
-            "(select imageId from `images` " +
-            "where photoId = ?1)"
+    @Modifying
+    @Query(value = " delete from `routeMap` " +
+            " where `routeMap`.imageId in " +
+            " ( select `images`.id from `images` " +
+            " where photoId = ?1 ) "
             , nativeQuery = true)
     public void deleteAllByPhotoId(Integer photoId);
 

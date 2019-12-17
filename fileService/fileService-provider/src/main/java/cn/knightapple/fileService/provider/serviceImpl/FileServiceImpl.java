@@ -5,11 +5,13 @@ import cn.knightapple.dataSource.entity.TImagesEntitys;
 import cn.knightapple.dataSource.entity.TRouteMapEntitys;
 import cn.knightapple.fileService.provider.config.FileUploadUtils;
 import cn.knightapple.fileService.service.FileService;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@Service
 public class FileServiceImpl implements FileService {
     @Autowired
     RouteMapDao routeMapDao;

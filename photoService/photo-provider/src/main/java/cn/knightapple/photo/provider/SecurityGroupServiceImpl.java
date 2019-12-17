@@ -3,8 +3,9 @@ package cn.knightapple.photo.provider;
 import cn.knightapple.dataSource.dao.RouteMapDao;
 import cn.knightapple.dataSource.dao.SecutityGroupDao;
 import cn.knightapple.photo.service.SecurityGroupService;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
+@Service
 public class SecurityGroupServiceImpl implements SecurityGroupService {
     @Autowired
     private SecutityGroupDao secutityGroupDao;

@@ -10,6 +10,7 @@ import cn.knightapple.imageService.dto.ImageInfoDto;
 import cn.knightapple.imageService.dto.ImageSaveDto;
 import cn.knightapple.imageService.service.ImageService;
 import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ImageServiceImpl implements ImageService {
     @Reference
     FileService fileService;

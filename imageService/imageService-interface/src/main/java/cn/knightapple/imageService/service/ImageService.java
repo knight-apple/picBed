@@ -5,14 +5,19 @@ import cn.knightapple.imageService.dto.ImageSaveDto;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 public interface ImageService {
     @Transactional
-    boolean addImage(MultipartFile file, Integer userId, ImageSaveDto imageSaveDto);
+    boolean addImage(byte[] imageBytes, String fileName, Integer userId, ImageSaveDto imageSaveDto);
 
     @Transactional
     boolean deleteImage(Integer imageId);
+
+    boolean belongTheUser(Integer imageId, Integer userId);
+
+    boolean belongPhoto(Integer imageId, Integer photoId);
 
     @Transactional
     boolean updateImage(ImageSaveDto imageSaveDto);

@@ -9,26 +9,28 @@
         <module name="ui" />
         <module name="imageService-interface" />
         <module name="userService-interface" />
-        <module name="zkui" />
-        <module name="dubbo-admin-server" />
         <module name="fileService-interface" />
         <module name="photo-provider" />
-        <module name="dubbo-admin-ui" />
         <module name="photo-interface" />
-        <module name="dubbo-admin-distribution" />
         <module name="userService-provider" />
         <module name="restfulApi-consumer" />
         <module name="imageService-provider" />
         <module name="zkui (2)" />
-        <module name="auth-provider" />
         <module name="dataSource" />
+        <module name="fileService-provider" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="adminApi" target="1.8" />
       <module name="adminApi-consumer" target="1.8" />
       <module name="adminApi-interface" target="1.8" />
+      <module name="auth" target="1.8" />
       <module name="auth-interface" target="1.8" />
+      <module name="auth-provider" target="1.8" />
+      <module name="cn.knightapple.picBed.fileService-interface" target="1.8" />
+      <module name="cn.knightapple.picBed.fileService-provider" target="1.8" />
+      <module name="cnknightapplefileServiceprovider" target="1.8" />
+      <module name="cnknightapplepicBedfileService" target="1.8" />
       <module name="configCenter" target="1.8" />
       <module name="configCenter-interface" target="1.8" />
       <module name="configCenter-provider" target="1.8" />
@@ -38,9 +40,12 @@
       <module name="consumertest-provider" target="1.8" />
       <module name="core" target="6" />
       <module name="dubbo" target="1.8" />
+      <module name="dubbo-admin" target="1.8" />
+      <module name="dubbo-admin-distribution" target="1.8" />
+      <module name="dubbo-admin-server" target="1.8" />
+      <module name="dubbo-admin-ui" target="1.8" />
       <module name="dubbo-interface" target="1.8" />
       <module name="dubbo-provider" target="1.8" />
-      <module name="fileService" target="1.8" />
       <module name="fileService-consumer" target="1.8" />
       <module name="nginx" target="1.8" />
       <module name="restfulApi-interface" target="1.8" />
@@ -48,6 +53,7 @@
       <module name="test-consumer" target="1.8" />
       <module name="test-interface" target="1.8" />
       <module name="test-provider" target="1.8" />
+      <module name="zkui" target="1.7" />
       <module name="zkui (2)" target="1.7" />
     </bytecodeTargetLevel>
   </component>
@@ -57,6 +63,9 @@
       <module name="adminApi-interface" options="-parameters" />
       <module name="auth-interface" options="-parameters" />
       <module name="auth-provider" options="-parameters" />
+      <module name="cn.knightapple.picBed.fileService-interface" options="-parameters" />
+      <module name="cn.knightapple.picBed.fileService-provider" options="-parameters" />
+      <module name="cnknightapplefileServiceprovider" options="-parameters" />
       <module name="configCenter-interface" options="-parameters" />
       <module name="configCenter-provider" options="-parameters" />
       <module name="consumertest-consumer" options="-parameters" />
@@ -69,7 +78,7 @@
       <module name="fileService" options="" />
       <module name="fileService-consumer" options="-parameters" />
       <module name="fileService-interface" options="-parameters" />
-      <module name="fileService-provider" options="" />
+      <module name="fileService-provider" options="-parameters" />
       <module name="imageService-interface" options="-parameters" />
       <module name="imageService-provider" options="-parameters" />
       <module name="nginx" options="-parameters" />

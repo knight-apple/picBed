@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping(value = "/api/user")
 public class UserController {
-    @Reference
+    @Reference(protocol = "hessian")
     UserService userService;
 
     @ApiOperation("修改用户信息")

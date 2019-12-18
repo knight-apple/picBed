@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/auth/auth.iml" filepath="$PROJECT_DIR$/auth/auth.iml" group="picBed and modules/auth and modules" />
+      <module fileurl="file://$PROJECT_DIR$/auth/auth-provider/auth-provider.iml" filepath="$PROJECT_DIR$/auth/auth-provider/auth-provider.iml" group="picBed and modules/auth and modules" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo.iml" filepath="$PROJECT_DIR$/dubbo/dubbo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/fileService/fileService.iml" filepath="$PROJECT_DIR$/fileService/fileService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/dubbo-admin/dubbo-admin.iml" filepath="$PROJECT_DIR$/common/dubbo-admin/dubbo-admin.iml" group="dubbo-admin and modules" />
+      <module fileurl="file://$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-distribution/dubbo-admin-distribution.iml" filepath="$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-distribution/dubbo-admin-distribution.iml" group="dubbo-admin and modules" />
+      <module fileurl="file://$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-server/dubbo-admin-server.iml" filepath="$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-server/dubbo-admin-server.iml" group="dubbo-admin and modules" />
+      <module fileurl="file://$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-ui/dubbo-admin-ui.iml" filepath="$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-ui/dubbo-admin-ui.iml" group="dubbo-admin and modules" />
+      <module fileurl="file://$PROJECT_DIR$/common/zkui/zkui.iml" filepath="$PROJECT_DIR$/common/zkui/zkui.iml" />
     </modules>
   </component>
 </project>

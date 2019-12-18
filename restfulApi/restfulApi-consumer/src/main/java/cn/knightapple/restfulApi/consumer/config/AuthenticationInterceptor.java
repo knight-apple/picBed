@@ -64,7 +64,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                     throw new RuntimeException("用户不存在，请重新登录");
                 }
                 // 验证 token
-                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(userService.getPasswordById(user.getId()))).build();
+                String password=userService.getPasswordById(user.getId());
+                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(password)).build();
                 try {
                     jwtVerifier.verify(token);
                 } catch (JWTVerificationException e) {

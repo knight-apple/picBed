@@ -12,6 +12,8 @@ import java.sql.Timestamp;
 public class ImageInfoDto implements Serializable {
     private int id;
     private String route;
+    private String zipRoute;
+
     private String title;
     private String intro;
     public static ImageInfoDto parseDto(TImagesEntitys tImagesEntitys){
@@ -19,6 +21,7 @@ public class ImageInfoDto implements Serializable {
         imageInfoDto.id = tImagesEntitys.getId();
         imageInfoDto.intro = tImagesEntitys.getIntro();
         imageInfoDto.route = tImagesEntitys.getRoute();
+        imageInfoDto.zipRoute = tImagesEntitys.getZipRoute();
         imageInfoDto.title = tImagesEntitys.getTitle();
         return imageInfoDto;
     }

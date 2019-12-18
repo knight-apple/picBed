@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration spring_boot_spring_config_custom_files="file://$MODULE_DIR$/../../fileService/fileService-provider/src/main/resources/log4j.properties">
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/../../fileService/fileService-provider/src/main/resources/hessian-provider.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+</module>

@@ -11,8 +11,9 @@
         <option value="$PROJECT_DIR$/adminApi/adminApi-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/common/dubbo-admin/pom.xml" />
         <option value="$PROJECT_DIR$/common/zkui-master/pom.xml" />
-        <option value="$PROJECT_DIR$/common/zkui/pom.xml" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
+        <option value="$PROJECT_DIR$/fileService/pom.xml" />
+        <option value="$PROJECT_DIR$/fileService-provider/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -20,14 +21,21 @@
         <option value="$PROJECT_DIR$/adminApi/adminApi-interface/pom.xml" />
         <option value="$PROJECT_DIR$/adminApi/pom.xml" />
         <option value="$PROJECT_DIR$/auth/auth-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/auth/auth-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/auth/pom.xml" />
+        <option value="$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-distribution/pom.xml" />
+        <option value="$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-server/pom.xml" />
+        <option value="$PROJECT_DIR$/common/dubbo-admin/dubbo-admin-ui/pom.xml" />
+        <option value="$PROJECT_DIR$/common/dubbo-admin/pom.xml" />
         <option value="$PROJECT_DIR$/configCenter/pom.xml" />
         <option value="$PROJECT_DIR$/consumertest/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo/dubbo-interface/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo/dubbo-provider/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo/pom.xml" />
+        <option value="$PROJECT_DIR$/fileService/cn.knightapple.fileService.provider/pom.xml" />
         <option value="$PROJECT_DIR$/fileService/fileService-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/fileService/fileService-provider/nginx/pom.xml" />
-        <option value="$PROJECT_DIR$/fileService/pom.xml" />
+        <option value="$PROJECT_DIR$/fileService/fileService.provider/pom.xml" />
         <option value="$PROJECT_DIR$/restfulApi/restfulApi-interface/pom.xml" />
         <option value="$PROJECT_DIR$/test/pom.xml" />
       </set>

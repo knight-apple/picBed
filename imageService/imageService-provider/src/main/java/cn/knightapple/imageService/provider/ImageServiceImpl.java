@@ -62,7 +62,7 @@ public class ImageServiceImpl implements ImageService {
             return false;
         }
         TImagesEntitys tImagesEntitys = tImagesEntitysOptional.get();
-        fileService.deleteImage(tImagesEntitys);
+        fileService.deleteImage(ImageInfoDto.parseDto(tImagesEntitys));
         imageDao.delete(tImagesEntitys);
         return true;
     }
@@ -136,7 +136,9 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public List<ImageInfoDto> getImageListByUserId(Integer userId) {
-        List<TImagesEntitys> imagesEntitysList = imageDao.findByUsersByUserIdEqualsOrderByCreateTimeDesc(userId);
+        TUsersEntitys tUsersEntitys = new TUsersEntitys();
+        tUsersEntitys.setId(userId);
+        List<TImagesEntitys> imagesEntitysList = imageDao.findByUsersByUserIdEqualsOrderByCreateTimeDesc(tUsersEntitys);
         List<ImageInfoDto> imageInfoDtoList = new ArrayList<>();
         imagesEntitysList.forEach(e -> {
             imageInfoDtoList.add(ImageInfoDto.parseDto(e));

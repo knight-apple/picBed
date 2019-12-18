@@ -6,18 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ui" />
-        <module name="imageService-interface" />
-        <module name="userService-interface" />
-        <module name="fileService-interface" />
-        <module name="photo-provider" />
+        <module name="zkui (2)" />
         <module name="photo-interface" />
         <module name="userService-provider" />
-        <module name="restfulApi-consumer" />
-        <module name="imageService-provider" />
-        <module name="zkui (2)" />
-        <module name="dataSource" />
         <module name="fileService-provider" />
+        <module name="fileService-interface" />
+        <module name="ui" />
+        <module name="dataSource" />
+        <module name="userService-interface" />
+        <module name="imageService-provider" />
+        <module name="restfulApi-consumer" />
+        <module name="imageService-interface" />
+        <module name="photo-provider" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

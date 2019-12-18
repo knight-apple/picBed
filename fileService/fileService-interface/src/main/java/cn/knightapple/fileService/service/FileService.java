@@ -1,6 +1,7 @@
 package cn.knightapple.fileService.service;
 
 import cn.knightapple.dataSource.entity.TImagesEntitys;
+import cn.knightapple.imageService.dto.ImageInfoDto;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,8 +24,8 @@ public interface FileService {
     /**
      * 同时删除这个文件和对应的映射
      *
-     * @param tImagesEntitys
+     * @param imageInfoDto
      */
     @Transactional
-    void deleteImage(TImagesEntitys tImagesEntitys);
+    void deleteImage(ImageInfoDto imageInfoDto);
 }

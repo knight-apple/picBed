@@ -16,7 +16,7 @@ import javax.xml.ws.WebServiceProvider;
 @EnableDubboConfig
 @EnableDubbo
 @EnableSpringConfigured
-@SpringBootApplication
+//@SpringBootApplication
 //@EnableSpringDataWebSupport
 @ComponentScan(basePackages = {"cn.knightapple.dataSource.config"})
 public class ImageProviderBootstrap {

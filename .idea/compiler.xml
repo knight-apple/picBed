@@ -11,6 +11,7 @@
         <module name="userService-provider" />
         <module name="fileService-provider" />
         <module name="fileService-interface" />
+        <module name="WebSite" />
         <module name="ui" />
         <module name="dataSource" />
         <module name="userService-interface" />
@@ -53,6 +54,8 @@
       <module name="test-consumer" target="1.8" />
       <module name="test-interface" target="1.8" />
       <module name="test-provider" target="1.8" />
+      <module name="ui" target="1.8" />
+      <module name="WebSite" target="1.8" />
       <module name="zkui" target="1.7" />
       <module name="zkui (2)" target="1.7" />
     </bytecodeTargetLevel>

@@ -23,6 +23,8 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
         System.out.println("添加拦截器");
         registry.addInterceptor(authenticationInterceptor())
                 .addPathPatterns("/api/**");
+        registry.addInterceptor(imageRefererInterceptor())
+                .addPathPatterns("/access/**");
 //                .excludePathPatterns("/swagger-ui.html","/doc.html");    // 拦截所有请求，通过判断是否有 @LoginRequired 注解 决定是否需要登录
     }
     @Override
@@ -40,5 +42,7 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
         return new AuthenticationInterceptor();// 自己写的拦截器
     }
 
+    @Bean
+    ImageRefererInterceptor imageRefererInterceptor(){return new ImageRefererInterceptor();}
 
 }

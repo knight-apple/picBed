@@ -38,6 +38,7 @@
         <option value="$PROJECT_DIR$/fileService/fileService.provider/pom.xml" />
         <option value="$PROJECT_DIR$/restfulApi/restfulApi-interface/pom.xml" />
         <option value="$PROJECT_DIR$/test/pom.xml" />
+        <option value="$PROJECT_DIR$/ui/pom.xml" />
       </set>
     </option>
   </component>

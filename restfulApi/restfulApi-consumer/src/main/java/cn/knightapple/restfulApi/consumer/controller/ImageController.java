@@ -46,7 +46,7 @@ public class ImageController {
         try {
             imageBytes = file.getBytes();
         } catch (IOException e) {
-            e.printStackTrace();
+            return CommonResult.failed("图片错误");
         }
         if (imageService.addImage(imageBytes, file.getOriginalFilename(), userInfoDto.getId(), imageSaveDto)) {
             return CommonResult.success("添加成功");

@@ -54,8 +54,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 UserInfoDto userInfoDtoForToken;
                 try {
                     userInfoDtoForToken = JwtUtil.getUserInfo(token);
-                    if(UserInfoDto.isEmpty(userInfoDtoForToken))
+                    if(UserInfoDto.isEmpty(userInfoDtoForToken)) {
                         throw new RuntimeException("token错误,请重新登录");
+                    }
                 } catch (JWTDecodeException j) {
                     throw new RuntimeException("401");
                 }

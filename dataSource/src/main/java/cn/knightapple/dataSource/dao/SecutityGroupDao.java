@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface SecutityGroupDao extends JpaRepository<TSecurityGroupEntitys, Integer> {
     //根据图片id查找存在的reference的数量,计划做缓存
@@ -21,4 +23,10 @@ public interface SecutityGroupDao extends JpaRepository<TSecurityGroupEntitys, I
 
 
     public void deleteByGroupIdEquals(Integer groupId);
+
+    @Query(value = "select distinct userId from securityGroup where groupId=?1", nativeQuery = true)
+    public List<Integer> findUserByGroupId(Integer groupId);
+
+    List<TSecurityGroupEntitys> findAllByGroupIdEquals(Integer groupId);
+
 }

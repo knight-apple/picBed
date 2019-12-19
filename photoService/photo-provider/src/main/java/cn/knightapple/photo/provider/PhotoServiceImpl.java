@@ -6,6 +6,7 @@ import cn.knightapple.dataSource.entity.TPhotosEntitys;
 import cn.knightapple.dataSource.entity.TUsersEntitys;
 import cn.knightapple.fileService.service.FileService;
 import cn.knightapple.photo.dto.PhotoInfoDto;
+import cn.knightapple.photo.provider.utils.SecurityGroupFactory;
 import cn.knightapple.photo.service.PhotoService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
@@ -33,7 +34,7 @@ public class PhotoServiceImpl implements PhotoService {
 
     @Override
     public PhotoInfoDto addPhoto(Integer userId, String intro, String title) {
-        Integer securityGroupId = groupDao.maxGroupId() + 1;
+        Integer securityGroupId = Math.max(groupDao.maxGroupIdByView(),groupDao.maxGroupIdByPhoto())+ 1;
         TUsersEntitys tUsersEntitys = new TUsersEntitys();
         tUsersEntitys.setId(userId);
         TPhotosEntitys tPhotosEntitys = new TPhotosEntitys();
@@ -41,8 +42,9 @@ public class PhotoServiceImpl implements PhotoService {
         tPhotosEntitys.setTitle(title);
         tPhotosEntitys.setUsersByUserId(tUsersEntitys);
         tPhotosEntitys.setSecurityGroupId(securityGroupId);
-
         PhotoInfoDto photoInfoDto = PhotoInfoDto.parseDto(photoDao.save(tPhotosEntitys));
+        SecurityGroupFactory securityGroupFactory = new SecurityGroupFactory(securityGroupId,userId,"exmple security group");
+        secutityGroupDao.save(securityGroupFactory.newInstance("localhost:80"));
         return photoInfoDto;
     }
 
@@ -103,9 +105,18 @@ public class PhotoServiceImpl implements PhotoService {
     public boolean hasThePhoto(Integer photoId, Integer userId) {
         Optional<TPhotosEntitys> tPhotosEntitysOptional = photoDao.findById(photoId);
         if (!tPhotosEntitysOptional.equals(Optional.empty())) {
-            return Integer.compare(tPhotosEntitysOptional.get().getUsersByUserId().getId(),userId)==0;
+            return Integer.compare(tPhotosEntitysOptional.get().getUsersByUserId().getId(), userId) == 0;
         }
         throw new IllegalArgumentException("该相册不存在");
     }
 
+    @Override
+    public Integer getSecurityGroupId(Integer photoId) {
+        Optional<TPhotosEntitys> tPhotosEntitysOptional = photoDao.findById(photoId);
+        if (!tPhotosEntitysOptional.equals(Optional.empty())) {
+            return tPhotosEntitysOptional.get().getSecurityGroupId();
+        }
+        return null;
+    }
 }
+

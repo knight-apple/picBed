@@ -3,6 +3,7 @@ package cn.knightapple.restfulApi.consumer.controller;
 import cn.knightapple.dto.UserInfoDto;
 import cn.knightapple.photo.dto.PhotoInfoDto;
 import cn.knightapple.photo.service.PhotoService;
+import cn.knightapple.photo.service.SecurityGroupService;
 import cn.knightapple.restfulApi.consumer.annotation.UserLoginToken;
 import cn.knightapple.restfulApi.consumer.api.CommonResult;
 import cn.knightapple.restfulApi.consumer.utils.JwtUtil;
@@ -24,10 +25,14 @@ public class PhotoController {
     @Reference
     PhotoService photoService;
 
+    @Reference
+    SecurityGroupService securityGroupService;
+
+
     @ApiOperation("添加照册")
     @RequestMapping(value = "/addPhoto", method = RequestMethod.POST)
     @UserLoginToken
-    public CommonResult addPhoto(String intro,String title, HttpServletRequest request) {
+    public CommonResult addPhoto(String intro, String title, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         UserInfoDto userInfoDto = JwtUtil.getUserInfo(token);
         PhotoInfoDto photoInfoDto = photoService.addPhoto(userInfoDto.getId(), intro, title);
@@ -83,6 +88,8 @@ public class PhotoController {
         String token = request.getHeader("Authorization");
         UserInfoDto userInfoDto = JwtUtil.getUserInfo(token);
         List<PhotoInfoDto> photoInfoDtoList = photoService.getPhotoList(userInfoDto.getId());
-        return CommonResult.success(photoInfoDtoList,"获取成功");
+        return CommonResult.success(photoInfoDtoList, "获取成功");
     }
+
+
 }

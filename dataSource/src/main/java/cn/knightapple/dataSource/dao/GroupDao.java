@@ -13,5 +13,8 @@ public interface GroupDao extends JpaRepository<TGroupViewEntitys, Integer> {
 
     //获得目前最大的组ID
     @Query(value = "select max(groupId) from groupView",nativeQuery = true)
-    Integer maxGroupId();
+    Integer maxGroupIdByView();
+    //获得目前最大的组ID
+    @Query(value = "select max(securityGroupId) from photos",nativeQuery = true)
+    Integer maxGroupIdByPhoto();
 }

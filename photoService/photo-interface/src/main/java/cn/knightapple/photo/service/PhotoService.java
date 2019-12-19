@@ -43,4 +43,6 @@ public interface PhotoService {
     PhotoInfoDto getPhotoByPhotoId(Integer photoId);
 
     boolean hasThePhoto(Integer photoId, Integer userId);
+
+    Integer getSecurityGroupId(Integer photoId);
 }

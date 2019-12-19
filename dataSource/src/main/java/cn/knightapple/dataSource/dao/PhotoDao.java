@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface PhotoDao extends JpaRepository<TPhotosEntitys,Integer> {
     List<TPhotosEntitys> findByUsersByUserIdEquals(TUsersEntitys tUsersEntitys);
 
+    void deleteByIdEquals(Integer integer);
 }

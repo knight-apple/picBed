@@ -63,7 +63,7 @@ public class PhotoServiceImpl implements PhotoService {
             routeMapDao.deleteAllByPhotoId(tPhotosEntitys.getId());
             imageDao.deleteAllByPhotosByPhotoIdEquals(tPhotosEntitys);
             secutityGroupDao.deleteByGroupIdEquals(tPhotosEntitys.getSecurityGroupId());
-            photoDao.delete(tPhotosEntitys);
+            photoDao.deleteByIdEquals(tPhotosEntitys.getId());
             return true;
         }
     }
@@ -105,7 +105,7 @@ public class PhotoServiceImpl implements PhotoService {
         if (!tPhotosEntitysOptional.equals(Optional.empty())) {
             return Integer.compare(tPhotosEntitysOptional.get().getUsersByUserId().getId(),userId)==0;
         }
-        throw new IllegalArgumentException("该图片不存在");
+        throw new IllegalArgumentException("该相册不存在");
     }
 
 }

@@ -1,11 +1,12 @@
 package cn.knightapple.dataSource.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "groupView", schema = "picBed", catalog = "")
-public class TGroupViewEntitys {
+public class TGroupViewEntitys implements Serializable {
     private Integer groupId;
     private Integer userId;
     private String groupName;

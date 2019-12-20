@@ -1,17 +1,21 @@
 package cn.knightapple.dataSource.entity;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializeFilter;
+import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "users", schema = "picBed", catalog = "")
-public class TUsersEntitys {
+public class TUsersEntitys implements Serializable {
     private Integer id;
     private String email;
     private String userName;
     private String password;
     private Integer type;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

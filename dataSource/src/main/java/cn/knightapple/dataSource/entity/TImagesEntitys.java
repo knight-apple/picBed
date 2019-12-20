@@ -1,12 +1,13 @@
 package cn.knightapple.dataSource.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "images", schema = "picBed", catalog = "")
-public class TImagesEntitys {
+public class TImagesEntitys implements Serializable {
     private int id;
     private String route;
     private String zipRoute;

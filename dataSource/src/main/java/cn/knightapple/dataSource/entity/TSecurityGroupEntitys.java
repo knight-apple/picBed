@@ -1,11 +1,12 @@
 package cn.knightapple.dataSource.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "securityGroup", schema = "picBed", catalog = "")
-public class TSecurityGroupEntitys {
+public class TSecurityGroupEntitys implements Serializable {
     private int itemId;
     private Integer groupId;
     private TUsersEntitys usersByUserId;

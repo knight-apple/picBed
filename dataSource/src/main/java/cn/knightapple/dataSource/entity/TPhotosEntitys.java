@@ -1,11 +1,12 @@
 package cn.knightapple.dataSource.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "photos", schema = "picBed", catalog = "")
-public class TPhotosEntitys {
+public class TPhotosEntitys implements Serializable {
     private int id;
     private String intro;
     private String title;

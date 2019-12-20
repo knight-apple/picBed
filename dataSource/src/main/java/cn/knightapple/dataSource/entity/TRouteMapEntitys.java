@@ -1,11 +1,12 @@
 package cn.knightapple.dataSource.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "routeMap", schema = "picBed", catalog = "")
-public class TRouteMapEntitys {
+public class TRouteMapEntitys implements Serializable {
     private int id;
     private String realUrl;
     private String route;

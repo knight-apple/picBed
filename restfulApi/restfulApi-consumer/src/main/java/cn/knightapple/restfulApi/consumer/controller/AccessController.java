@@ -5,6 +5,7 @@ import cn.knightapple.restfulApi.consumer.annotation.ImageReferered;
 import cn.knightapple.restfulApi.consumer.api.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.io.IOUtils;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 
@@ -35,10 +37,9 @@ public class AccessController {
 
         String imageUrl = accessService.getImageUrl(route);
         try {
-            BufferedImage bufferedImage = ImageIO.read(new URL(imageUrl));
-//            response.setContentType("image/png");
+            InputStream inputStream =new URL(imageUrl).openStream();
             OutputStream outputStream = response.getOutputStream();
-            ImageIO.write(bufferedImage, "jpg", outputStream);
+            IOUtils.copy(inputStream,outputStream);
             outputStream.flush();
             outputStream.close();
         } catch (IOException e) {
@@ -53,10 +54,9 @@ public class AccessController {
 
         String imageUrl = accessService.getImageUrl(route);
         try {
-            BufferedImage bufferedImage = ImageIO.read(new URL(imageUrl));
-//            response.setContentType("image/png");
+            InputStream inputStream =new URL(imageUrl).openStream();
             OutputStream outputStream = response.getOutputStream();
-            ImageIO.write(bufferedImage, "jpg", outputStream);
+            IOUtils.copy(inputStream,outputStream);
             outputStream.flush();
             outputStream.close();
         } catch (IOException e) {

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ui/WebSite.iml" filepath="$PROJECT_DIR$/ui/WebSite.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photoService/photoService.iml" filepath="$PROJECT_DIR$/photoService/photoService.iml" group="picBed and modules/photoService and modules" />
       <module fileurl="file://$PROJECT_DIR$/ui/ui.iml" filepath="$PROJECT_DIR$/ui/ui.iml" group="picBed and modules" />
     </modules>
   </component>

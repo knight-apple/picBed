@@ -36,7 +36,25 @@ public class AccessController {
         String imageUrl = accessService.getImageUrl(route);
         try {
             BufferedImage bufferedImage = ImageIO.read(new URL(imageUrl));
-            response.setContentType("image/png");
+//            response.setContentType("image/png");
+            OutputStream outputStream = response.getOutputStream();
+            ImageIO.write(bufferedImage, "jpg", outputStream);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return CommonResult.success("success");
+    }
+
+    @RequestMapping(value = "/noReferer/{route}", method = RequestMethod.GET)
+    @ApiOperation("获取图片")
+    public CommonResult noreferer(@PathVariable String route, HttpServletRequest request, HttpServletResponse response) {
+
+        String imageUrl = accessService.getImageUrl(route);
+        try {
+            BufferedImage bufferedImage = ImageIO.read(new URL(imageUrl));
+//            response.setContentType("image/png");
             OutputStream outputStream = response.getOutputStream();
             ImageIO.write(bufferedImage, "jpg", outputStream);
             outputStream.flush();

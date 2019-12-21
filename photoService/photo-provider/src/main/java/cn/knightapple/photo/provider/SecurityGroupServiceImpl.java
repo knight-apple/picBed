@@ -78,6 +78,15 @@ public class SecurityGroupServiceImpl implements SecurityGroupService {
         });
         return refererList;
     }
+    @Override
+    public List<Pair<Integer, String>> findRefererByUserId(Integer userId) {
+        List<TSecurityGroupEntitys> tSecurityGroupEntitys = secutityGroupDao.findAllByUsersByUserIdEquals(userId);
+        List<Pair<Integer, String>> refererList = new ArrayList<Pair<Integer, String>>();
+        tSecurityGroupEntitys.forEach(entity -> {
+            refererList.add(new Pair<>(entity.getItemId(), entity.getRefererDomain()));
+        });
+        return refererList;
+    }
 
     @Override
     public boolean hasTheItem(Integer itemId, Integer userId)

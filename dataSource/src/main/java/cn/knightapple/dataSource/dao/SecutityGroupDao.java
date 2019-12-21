@@ -29,4 +29,5 @@ public interface SecutityGroupDao extends JpaRepository<TSecurityGroupEntitys, I
 
     List<TSecurityGroupEntitys> findAllByGroupIdEquals(Integer groupId);
 
+    List<TSecurityGroupEntitys> findAllByUsersByUserIdEquals(Integer userId);
 }

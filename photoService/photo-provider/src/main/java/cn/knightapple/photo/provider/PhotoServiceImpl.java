@@ -11,6 +11,8 @@ import cn.knightapple.photo.service.PhotoService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +57,7 @@ public class PhotoServiceImpl implements PhotoService {
             return false;
         } else {
             TPhotosEntitys tPhotosEntitys = tPhotosEntitysOptional.get();
-            List<TImagesEntitys> imagesEntitysList = imageDao.findAllByPhotosByPhotoIdEqualsOrderByCreateTimeDesc(tPhotosEntitys);
+            List<TImagesEntitys> imagesEntitysList = imageDao.findAllByPhotosByPhotoIdEquals(tPhotosEntitys);
             List<String> routeList = new ArrayList<>();
             imagesEntitysList.forEach((e) -> {
                 routeList.add(e.getRoute());

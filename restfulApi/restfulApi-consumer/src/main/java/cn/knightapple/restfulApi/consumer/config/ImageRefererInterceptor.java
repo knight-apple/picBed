@@ -3,6 +3,7 @@ package cn.knightapple.restfulApi.consumer.config;
 import cn.knightapple.dto.UserInfoDto;
 import cn.knightapple.photo.service.SecurityGroupService;
 import cn.knightapple.restfulApi.consumer.annotation.ImageReferered;
+import cn.knightapple.restfulApi.consumer.utils.CookieUtils;
 import cn.knightapple.restfulApi.consumer.utils.JwtUtil;
 import cn.knightapple.service.UserService;
 import com.auth0.jwt.JWT;
@@ -29,6 +30,10 @@ public class ImageRefererInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("Authorization");// 从 http 请求头中取出 token
         String referer = request.getHeader("referer");
+        if(token==null)
+        {
+            token = CookieUtils.getCookie("Authorization",request);
+        }
         // 如果不是映射到方法直接通过
         if (!(handler instanceof HandlerMethod)) {
             return true;

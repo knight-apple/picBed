@@ -14,7 +14,6 @@
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/fileService/pom.xml" />
         <option value="$PROJECT_DIR$/fileService-provider/pom.xml" />
-        <option value="$PROJECT_DIR$/demo/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -11,8 +11,10 @@ import cn.knightapple.restfulApi.consumer.utils.JwtUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,10 +33,33 @@ public class ImageController {
     @Reference
     PhotoService photoService;
 
-    @ApiOperation("添加图片")
+    @ApiOperation("上传添加图片")
     @UserLoginToken
     @RequestMapping(value = "addImage", method = RequestMethod.POST)
     public CommonResult addImage(MultipartFile file, String title, String intro, Integer photoId, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        UserInfoDto userInfoDto = JwtUtil.getUserInfo(token);
+        ImageSaveDto imageSaveDto = new ImageSaveDto();
+        imageSaveDto.setIntro(intro);
+        imageSaveDto.setTitle(title);
+        imageSaveDto.setType(1);
+        imageSaveDto.setPhotoId(photoId);
+        byte[] imageBytes = null;
+        try {
+            imageBytes = file.getBytes();
+        } catch (IOException e) {
+            return CommonResult.failed("图片错误");
+        }
+        if (imageService.addImage(imageBytes, file.getOriginalFilename(), userInfoDto.getId(), imageSaveDto)) {
+            return CommonResult.success("添加成功");
+        }
+        return CommonResult.failed("添加失败");
+    }
+
+    @ApiOperation("通过地址添加图片")
+    @UserLoginToken
+    @RequestMapping(value = "addImageByUrl", method = RequestMethod.POST)
+    public CommonResult addImageByUrl(MultipartFile file, String title, String intro, Integer photoId, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         UserInfoDto userInfoDto = JwtUtil.getUserInfo(token);
         ImageSaveDto imageSaveDto = new ImageSaveDto();
@@ -94,23 +119,28 @@ public class ImageController {
     @ApiOperation("获取相册的图片列表")
     @UserLoginToken
     @RequestMapping(value = "getImageListByPhoto", method = RequestMethod.POST)
-    public CommonResult getImageListByPhotoId(Integer photoId, HttpServletRequest request) {
+    public CommonResult getImageListByPhotoId(Integer photoId,
+                                              @RequestParam(name = "pageNum", defaultValue = "1") Integer pageNum,
+                                              @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+                                              HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         UserInfoDto userInfoDto = JwtUtil.getUserInfo(token);
         if (!photoService.hasThePhoto(photoId, userInfoDto.getId())) {
             return CommonResult.failed("只能获取自己的图片");
         }
-        List<ImageInfoDto> imageInfoDtoList = imageService.getImageListByPhotoId(photoId);
+        List<ImageInfoDto> imageInfoDtoList = imageService.getImageListByPhotoId(photoId, pageNum - 1, pageSize);
         return CommonResult.success(imageInfoDtoList, "获取成功");
     }
 
     @ApiOperation("获取用户的所有图片列表")
     @UserLoginToken
     @RequestMapping(value = "getImageListByUser", method = RequestMethod.POST)
-    public CommonResult getImageByUser(HttpServletRequest request) {
+    public CommonResult getImageByUser(@RequestParam(name = "pageNum", defaultValue = "1") Integer pageNum,
+                                       @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+                                       HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         UserInfoDto userInfoDto = JwtUtil.getUserInfo(token);
-        List<ImageInfoDto> imageInfoDtoList = imageService.getImageListByUserId(userInfoDto.getId());
+        List<ImageInfoDto> imageInfoDtoList = imageService.getImageListByUserId(userInfoDto.getId(), pageNum , pageSize);
         return CommonResult.success(imageInfoDtoList, "获取成功");
     }
 

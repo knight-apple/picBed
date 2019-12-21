@@ -12,6 +12,8 @@ import cn.knightapple.imageService.service.ImageService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.util.DigestUtils;
 
 import java.sql.Timestamp;
@@ -123,10 +125,10 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public List<ImageInfoDto> getImageListByPhotoId(Integer photoId) {
+    public List<ImageInfoDto> getImageListByPhotoId(Integer photoId, Integer pageNum,Integer pageSize) {
         TPhotosEntitys tPhotosEntitys = new TPhotosEntitys();
         tPhotosEntitys.setId(photoId);
-        List<TImagesEntitys> imagesEntitysList = imageDao.findAllByPhotosByPhotoIdEqualsOrderByCreateTimeDesc(tPhotosEntitys);
+        List<TImagesEntitys> imagesEntitysList = imageDao.findAllByPhotosByPhotoIdEqualsOrderByCreateTimeDesc(tPhotosEntitys,PageRequest.of(pageNum,pageSize));
         List<ImageInfoDto> imageInfoDtoList = new ArrayList<>();
         imagesEntitysList.forEach(e -> {
             imageInfoDtoList.add(ImageInfoDto.parseDto(e));
@@ -135,10 +137,10 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public List<ImageInfoDto> getImageListByUserId(Integer userId) {
+    public List<ImageInfoDto> getImageListByUserId(Integer userId, Integer pageNum,Integer pageSize) {
         TUsersEntitys tUsersEntitys = new TUsersEntitys();
         tUsersEntitys.setId(userId);
-        List<TImagesEntitys> imagesEntitysList = imageDao.findByUsersByUserIdEqualsOrderByCreateTimeDesc(tUsersEntitys);
+        List<TImagesEntitys> imagesEntitysList = imageDao.findByUsersByUserIdEqualsOrderByCreateTimeDesc(tUsersEntitys,PageRequest.of(pageNum-1,pageSize));
         List<ImageInfoDto> imageInfoDtoList = new ArrayList<>();
         imagesEntitysList.forEach(e -> {
             imageInfoDtoList.add(ImageInfoDto.parseDto(e));

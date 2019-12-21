@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/css/layui.css" media="all">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery-2.0.2.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<script>
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return null;
+    }
+
+    var testScroll = function () {
+        var scrollTopH = document.body.scrollTop || document.documentElement.scrollTop;
+        var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
+        var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
+        var scrollHeight = document.documentElement.scrollTop === 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
+        if (scrollTop != 0 && clientHeight + scrollTop >= scrollHeight - 50) {
+            return true;
+        }
+    }
+    var deleteImage = function (imageId) {
+        $.ajax({
+            type: "POST",
+            url: "http://172.16.56.7:8080/api/image/deleteImageById",
+            data: "imageId=" + imageId,
+            headers: {
+                Authorization: token
+            },
+            success: function (result) {
+                if (result.code == 200) {
+                    $("#p" + imageId).html("");
+                    layer.msg("删除成功");
+                }
+            }
+        })
+    }
+    var addImage = function (data) {
+        images = "";
+        for (i = 0; i < data.length; i++) {
+            images += '<div class="panel panel-default ml-lg-5" id="p' + data[i].id + '">\n' +
+                '            <div class="panel-heading">\n' +
+                '                <h2 class="layui-colla-title"><a data-toggle="collapse" data-parent="#accordion" href="#imageslist' + data[i].id + '">' + data[i].title + '</a>\n' +
+                '                <a onclick="deleteImage(' + data[i].id + ')">删除</a>' +
+                '                </h2>\n' +
+                '                <div><a href="http://172.16.56.7:8080/access/image/getImage/' + data[i].route + '"\n' +
+                '                        target="_blank" referrer="unsafe-url" ><img\n' +
+                '                        src="http://172.16.56.7:8080/access/image/getImage/' + data[i].route + '"\n' +
+                '                        style="height: 10em;" class="img-thumbnail"></a></div>\n' +
+                '            </div>\n' +
+                '            <div id="imageslist' + data[i].id + '" class="panel-collapse collapse in">\n' +
+                '                <div class="panel-body">\n' +
+                '                    <p>intro</p>\n' +
+                '                    <br/>\n' +
+                // '                    <form class="form-group ">\n' +
+                '                        <label>源地址</label>\n' +
+                '                        <table class="table" style="margin-left: 10em;">\n' +
+                '                            <tr>\n' +
+                '                                <td style="width: 15em;">\n' +
+                '                                    <b>原始链接</b>\n' +
+                '                                </td>\n' +
+                '                                <td><input class="form-control-plaintext w-75"\n' +
+                '                                           value="http://172.16.56.7:8080/access/image/getImage/' + data[i].route + '"></p>\n' +
+                '                                </td>\n' +
+                '                            </tr>\n' +
+                '                            <tr>\n' +
+                '                                <td style="width: 15em;">\n' +
+                '                                    <b>压缩版链接</b>\n' +
+                '                                </td>\n' +
+                '                                <td><input class="form-control-plaintext w-75"\n' +
+                '                                           value="http://172.16.56.7:8080/access/image/getImage/' + data[i].zipRoute + '"></p>\n' +
+                '                                </td>\n' +
+                '                            </tr>\n' +
+                '                            <tr>\n' +
+                '                                <td style="width: 15em;">\n' +
+                '                                    <b>无Referer验证链接</b>\n' +
+                '                                </td>\n' +
+                '                                <td><input class="form-control-plaintext w-75"\n' +
+                '                                           value="http://172.16.56.7:8080/access/image/noReferer/' + data[i].zipRoute + '"></p>\n' +
+                '                                </td>\n' +
+                '                            </tr>\n' +
+                '                        </table>\n' +
+                '                        <label>原大小版</label>\n' +
+                '                        <table class="table" style="margin-left: 10em;">\n' +
+                '                            <tr>\n' +
+                '                                <td style="width: 15em;">\n' +
+                '                                    <b>Html代码</b>\n' +
+                '                                </td>\n' +
+                '                                <td><input class="form-control-plaintext w-75"\n' +
+                '                                           value=\'<a href="http://172.16.56.7:8080/access/image/getImage/' + data[i].route + '" referrer="unsafe-url" "><img src="http://172.16.56.7:8080/access/image/getImage/' + data[i].route + '" alt="' + data[i].route + '" border="0" /></a>\'></p>\n' +
+                '                                </td>\n' +
+                '                            </tr>\n' +
+                '                            <tr>\n' +
+                '                                <td style="width: 15em;">\n' +
+                '                                    <b>MarkDown Code</b>\n' +
+                '                                </td>\n' +
+                '                                <td><input class="form-control-plaintext w-75"\n' +
+                '                                               value=\'![' + data[i].route + ']("http://172.16.56.7:8080/access/image/getImage/' + data[i].route + ' referrer="unsafe-url" ) \'>\n' +
+                '                                </td>\n' +
+                '                            </tr>\n' +
+                '                        </table>\n' +
+                '                        <label>压缩版</label>\n' +
+                '                            <table class="table" style="margin-left: 10em;">\n' +
+                '                                <tr>\n' +
+                '                                    <td style="width: 15em;">\n' +
+                '                                        <b>Html代码</b>\n' +
+                '                                    </td>\n' +
+                '                                    <td><input class="form-control-plaintext w-75"\n' +
+                '                                               value=\'<a href="http://172.16.56.7:8080/access/image/getImage/' + data[i].zipRoute + '" referrer="unsafe-url" ><img src="http://172.16.56.7:8080/access/image/getImage/' + data[i].zipRoute + '" alt="' + data[i].zipRoute + '" border="0" /></a>\'></p>\n' +
+                '                                    </td>\n' +
+                '                                </tr>\n' +
+                '                                <tr>\n' +
+                '                                    <td style="width: 15em;">\n' +
+                '                                        <b>MarkDown Code</b>\n' +
+                '                                    </td>\n' +
+                '                                    <td><input class="form-control-plaintext w-75"\n' +
+                '                                               value=\'![' + data[i].zipRoute + ']("http://172.16.56.7:8080/access/image/getImage/' + data[i].zipRoute + ') referrer="unsafe-url" \'>\n' +
+                '                                    </td>\n' +
+                '                                </tr>\n' +
+                '                            </table>\n' +
+                '                        <label>无Referer版</label>\n' +
+                '                            <table class="table" style="margin-left: 10em;">\n' +
+                '                                <tr>\n' +
+                '                                    <td style="width: 15em;">\n' +
+                '                                        <b>Html代码</b>\n' +
+                '                                    </td>\n' +
+                '                                    <td><input class="form-control-plaintext w-75"\n' +
+                '                                               value=\'<a href="http://172.16.56.7:8080/access/image/noReferer/' + data[i].zipRoute + '" referrer="unsafe-url" ><img src="http://172.16.56.7:8080/access/image/noReferer/' + data[i].zipRoute + '" alt="' + data[i].zipRoute + '" border="0" /></a>\'></p>\n' +
+                '                                    </td>\n' +
+                '                                </tr>\n' +
+                '                                <tr>\n' +
+                '                                    <td style="width: 15em;">\n' +
+                '                                        <b>MarkDown Code</b>\n' +
+                '                                    </td>\n' +
+                '                                    <td><input class="form-control-plaintext w-75"\n' +
+                '                                               value=\'![' + data[i].route + '](http://172.16.56.7:8080/access/image/noReferer/' + data[i].route + ') referrer="unsafe-url" \'>\n' +
+                '                                    </td>\n' +
+                '                                </tr>\n' +
+                '                            </table>\n' +
+                // '                    </form>\n' +
+                '                </div>\n' +
+                '            </div>\n' +
+                '        </div>';
+
+        }
+        $("#imageList").append(images);
+    }
+    var loadImage = function (num, photoId) {
+        if (photoId == null) {
+            //TODO 从用户处获取图片列表
+            userPageInfo = "pageNum=" + num + "&pageSize=6"
+            $.ajax({
+                type: "POST",
+                url: "http://172.16.56.7:8080/api/image/getImageListByUser",
+                data: userPageInfo,
+                headers: {
+                    Authorization: token
+                },
+                success: function (result) {
+                    if (result.code == 200) {
+                        data = result.data;
+                        addImage(data);
+                    }
+
+                }
+            });
+        } else {
+            //TODO 从相册处获取图片列表
+            photoPageInfo = "pageNum=" + num + "&pageSize=6&photoId=" + photoId;
+            $.ajax({
+                type: "POST",
+                url: "http://172.16.56.7:8080/api/image/getImageListByPhoto",
+                data: photoPageInfo,
+                headers: {
+                    Authorization: token
+                },
+                success: function (result) {
+                    if (result.code == 200) {
+                        data = result.data;
+                        addImage(data);
+                    }
+                }
+            });
+        }
+    }
+    var loadPhoto = function () {
+        $.ajax({
+            type: "POST",
+            url: "http://172.16.56.7:8080/api/photo/getPhotoList",
+            headers: {
+                Authorization: token
+            },
+            success: function (result) {
+                data = result.data;
+                innerStr = "";
+                uploadStr = "";
+                for (i = 0; i < data.length; i++) {
+                    innerStr += '<a href="home.html?photoId=' + data[i].id + '">' + '<option>' + data[i].title + '</option></a>'
+                    uploadStr += "<option value='" + data[i].id + "'>" + data[i].title + "</option>"
+                }
+                console.log(innerStr);
+                $("#photoList").html(innerStr);
+                $("#upload_photoId").html(uploadStr);
+            }
+        });
+    }
+    var photoId = getQueryVariable("photoId");
+    var userInfo = new Object();
+    token = $.cookie('Authorization')
+    if (token != null) {
+        $.ajax({
+            url: "http://172.16.56.7:8080/api/user/getUserInfo",
+            type: "get",
+            headers: {
+                Authorization: token
+            },
+            success: function (result) {
+                if (result.code == 200) {
+                    userInfo = result.data;
+                }
+            },
+            error: function (result) {
+                window.location.href = "/module/login.html";
+            }
+        });
+    } else {
+        window.location.href = "/module/login.html";
+    }
+</script>
+<body>
+
+<ul class="layui-nav">
+    <li class="layui-nav-item layui-this"><a>首页</a></li>
+    <li class="layui-nav-item"><a href="photo.html">相册</a></li>
+    <!--    <li class="layui-nav-item"><a href="photo.html">安全组</a></li>-->
+    <li class="layui-nav-item"><a data-toggle="modal" data-target="#uploadImageModal">上传图片</a></li>
+
+    <li class="layui-nav-item float-lg-right mr-5">
+        <a href="javascript:;">用户</a>
+        <dl class="layui-nav-child">
+            <dd><a href="">修改密码</a></dd>
+            <dd><a href="">修改个人信息</a></dd>
+        </dl>
+    </li>
+</ul>
+
+<button data-method="addPhoto" type="button" class="layui-btn float-lg-left m-4">添加相册</button>
+<!--<br/>-->
+<!--<br/>-->
+<!--<br/>-->
+
+<!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">-->
+<!--    <legend>请选择相册</legend>-->
+<!--</fieldset>-->
+<div class="dropdown float-lg-left">
+    <button type="button" class="btn btn-primary dropdown-toggle m-4" data-toggle="dropdown">
+        请选择相册
+    </button>
+    <div class="dropdown-menu" id="photoList">
+    </div>
+</div>
+<hr/>
+
+<div class="panel-group" id="accordion">
+    <div class="panel-group" id="imageList">
+    </div>
+</div>
+
+<script src="/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['layer', 'form', 'element', 'upload'], function () { //独立版的layer无需执行这一句
+        var $ = layui.jquery;
+        var layer = layui.layer; //独立版的layer无需执行这一句
+        var element = layui.element;
+        var form = layui.form;
+        var upload = layui.upload;
+        var active = {
+            tabAdd: function () {
+                //新增一个Tab项
+                element.tabAdd('demo', {
+                    title: '新选项' + (Math.random() * 1000 | 0) //用于演示
+                    , content: '内容' + (Math.random() * 1000 | 0)
+                    , id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+                })
+            },
+            addPhoto: function () {
+                //示范一个公告层
+                layer.open({
+                    type: 1
+                    , title: '添加相册' //不显示标题栏
+                    , closeBtn: true
+                    , area: '900px;'
+                    , shade: 0.7
+                    , id: 'addPhotoLayer' //设定一个id，防止重复弹出
+                    , btn: ['添加', '取消']
+                    , yes: function () {
+                        console.log($("#add-photo-form").serialize());
+                        $.ajax({
+                            type: "POST",
+                            url: "http://172.16.56.7:8080/api/photo/addPhoto",
+                            data: $("#add-photo-form").serialize(),
+                            headers: {
+                                Authorization: token
+                            },
+                            success: function (result) {
+                                layer.closeAll();
+                                layer.msg('添加成功', {
+                                    time: 2000, //20s后自动关闭
+                                });
+                                loadPhoto();
+                            }
+                        });
+                    }
+                    , btn2: function () {
+                        layer.close();
+                    }
+                    , moveType: 0 //拖拽模式，0或者1
+                    , content: '<form class="layui-form" id="add-photo-form">\n' +
+                        '    <table class="layui-table">\n' +
+                        '        <tr>\n' +
+                        '            <td>\n' +
+                        '                <div class="layui-form-item">\n' +
+                        '                    <label class="layui-form-label" style="width: auto">相册标题</label>\n' +
+                        '                    <div class="layui-input-block">\n' +
+                        '                        <input type="text" name="title" lay-verify="title" autocomplete="off"\n' +
+                        '                               placeholder="请输入标题" class="layui-input">\n' +
+                        '                    </div>\n' +
+                        '                </div>\n' +
+                        '            </td>\n' +
+                        '        </tr>\n' +
+                        '        <tr>\n' +
+                        '            <td>\n' +
+                        '                <div class="layui-form-item layui-form-text">\n' +
+                        '                    <label class="layui-form-label">介绍</label>\n' +
+                        '                    <div class="layui-input-block">\n' +
+                        '                        <textarea placeholder="请输入内容" class="layui-textarea" name="desc"></textarea>\n' +
+                        '                    </div>\n' +
+                        '                </div>\n' +
+                        '            </td>\n' +
+                        '        </tr>\n' +
+                        '    </table>\n' +
+                        '</form>'
+                });
+            }
+        };
+        $('.layui-btn').on('click', function () {
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+        loadPhoto();
+
+        var pageNum ;
+        $(function () {
+            pageNum = 1;
+            if (photoId == null) {
+                loadImage(pageNum);
+            } else {
+                loadImage(pageNum, photoId);
+            }
+            pageNum++;
+            setInterval(function () {
+                if (testScroll()) {
+                    if (photoId == null) {
+                        loadImage(pageNum);
+                    } else {
+                        loadImage(pageNum, photoId);
+                    }
+                    pageNum++;
+                }
+            }, 2000);
+        });
+        upload.render({
+            elem: '#uploadFile',
+            url: 'http://172.16.56.7:8080/api/image/addImage',
+            auto: false,
+            data: {
+                title: function () {
+                    console.log($("#upload-title").val());
+                    return $("#upload-title").val();
+                },
+                intro: function () {
+                    console.log($("#upload-intro").val());
+                    return $("#upload-intro").val();
+                },
+                photoId: function () {
+                    console.log($("#upload_photoId").val());
+                    return $("#upload_photoId").val();
+                }
+            },
+            headers: {
+                Authorization: token
+            },
+            bindAction: "#upload-confirm",
+            choose:
+                function (obj) {
+                    console.log(obj);
+                    obj.preview(function (index, file, result) {
+                        $('#imageDemo').attr('src', result); //图片链接（base64）
+                    });
+                },
+            before: function (res) {
+                console.log(res)
+                return false;
+            },
+            done: function (res) {
+                if(res.code=200){
+                    $("#imageList").html("");
+                    pageNum=1;
+                    if (photoId == null) {
+                        loadImage(pageNum);
+                    } else {
+                        loadImage(pageNum, photoId);
+                    }
+                    pageNum++;
+                }
+            }
+
+            //,multiple: true
+            // , bindAction: function (res) {
+            //     console.log("bindAction");
+            //     console.log(res);
+            // }
+
+            // ,progress: function(n){
+            //     var percent = n + '%' //获取进度百分比
+            //     element.progress('demo', percent); //可配合 layui 进度条元素使用
+            // }
+
+        })
+        ;
+
+    });
+</script>
+<div class="modal fade" id="uploadImageModal" tabindex="-1" role="dialog" aria-labelledby="uploadImageModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="uploadImageModalLabel">
+                    上传图片
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <form id="uploadFile-form" class="form">
+                <input id="upload-title" type="text" name="title" class="form-control" placeholder="标题"/>
+                <textarea id="upload-intro" name="title" class="form-control" placeholder="介绍"></textarea>
+                <select id="upload_photoId" class="form-control" name="photoId"></select>
+            </form>
+            <div class="modal-body ml-lg-5">
+                <div class="layui-upload-drag" id="uploadFile">
+                    <i class="layui-icon"></i>
+                    <p>点击上传，或将文件拖拽到此处</p>
+                </div>
+                <div class="layui-upload-list">
+                    <img class="layui-upload-img img-fluid w-50" id="imageDemo">
+                    <p id="demoText"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="upload-confirm">上传</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearItem()">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+</body>
+</html>

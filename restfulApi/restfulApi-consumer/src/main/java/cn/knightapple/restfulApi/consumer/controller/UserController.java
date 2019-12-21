@@ -23,6 +23,23 @@ public class UserController {
     @Reference(protocol = "hessian")
     UserService userService;
 
+    @ApiOperation("获取用户信息")
+    @RequestMapping(value = "/getUserInfo", method = RequestMethod.GET)
+    @UserLoginToken
+    public CommonResult getUserInfo(String username, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        UserInfoDto userInfoDto = JwtUtil.getUserInfo(token);
+        if (UserInfoDto.isEmpty(userInfoDto)) {
+            return CommonResult.failed();
+        }
+        userInfoDto.setUserName(username);
+        if (userInfoDto.getId() == null || userInfoDto.getId() == 0) {
+            userInfoDto = userService.findUserById(userInfoDto.getId());
+        }
+        return CommonResult.success(userInfoDto, "获取成功");
+    }
+
+
     @ApiOperation("修改用户信息")
     @RequestMapping(value = "/updateUser", method = RequestMethod.PATCH)
     @UserLoginToken
@@ -50,7 +67,7 @@ public class UserController {
             return CommonResult.failed();
         }
         if (userService.updatePassword(userInfoDto.getId(), password)) {
-            Cookie cookietoken = new Cookie("Authorization",JwtUtil.sign(userInfoDto, password));
+            Cookie cookietoken = new Cookie("Authorization", JwtUtil.sign(userInfoDto, password));
             response.addCookie(cookietoken);
             return CommonResult.success("更新成功");
         } else {

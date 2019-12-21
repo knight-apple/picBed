@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +25,6 @@ public class PhotoController {
 
     @Reference
     PhotoService photoService;
-
-    @Reference
-    SecurityGroupService securityGroupService;
 
 
     @ApiOperation("添加照册")
@@ -70,7 +68,10 @@ public class PhotoController {
     @UserLoginToken
     @RequestMapping(value = "/getOnePhoto", method = RequestMethod.POST)
     @ApiOperation("获取某个相册的信息")
-    public CommonResult getOnePhotoInfo(Integer phothId, HttpServletRequest request) {
+    public CommonResult getOnePhotoInfo(
+            @RequestParam(name = "pageNum", defaultValue = "1") Integer pageNum,
+            @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+            Integer phothId, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         UserInfoDto userInfoDto = JwtUtil.getUserInfo(token);
         if (photoService.hasThePhoto(phothId, userInfoDto.getId())) {

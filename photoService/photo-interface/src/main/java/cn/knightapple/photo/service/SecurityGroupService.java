@@ -19,5 +19,7 @@ public interface SecurityGroupService {
 
     List<Pair<Integer, String>> findRefererByGroupId(Integer gourpId);
 
+    List<Pair<Integer, String>> findRefererByUserId(Integer userId);
+
     boolean hasTheItem(Integer itemId, Integer userId);
 }

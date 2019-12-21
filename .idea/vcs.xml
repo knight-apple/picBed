@@ -5,5 +5,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ui/site/vue2-manage" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ui/site2/vue-element-admin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ui/site4/layui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ui/site4/mylayui" vcs="Git" />
   </component>
 </project>

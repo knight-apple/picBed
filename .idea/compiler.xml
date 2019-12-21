@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ui" />
-        <module name="demo" />
         <module name="userService-interface" />
         <module name="zkui (2)" />
         <module name="fileService-interface" />
@@ -41,6 +40,7 @@
       <module name="consumertest-interface" target="1.8" />
       <module name="consumertest-provider" target="1.8" />
       <module name="core" target="6" />
+      <module name="demo" target="1.5" />
       <module name="dubbo" target="1.8" />
       <module name="dubbo-admin" target="1.8" />
       <module name="dubbo-admin-distribution" target="1.8" />

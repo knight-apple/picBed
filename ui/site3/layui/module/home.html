@@ -255,8 +255,8 @@
     <li class="layui-nav-item float-lg-right mr-5">
         <a href="javascript:;">用户</a>
         <dl class="layui-nav-child">
-            <dd><a href="">修改密码</a></dd>
-            <dd><a href="">修改个人信息</a></dd>
+            <dd><a data-toggle="modal" data-target="#changePasswordModal" style="color: black">修改密码</a></dd>
+            <dd><a data-toggle="modal" data-target="#changePasswordModal" style="color: black">修改个人信息</a></dd>
         </dl>
     </li>
 </ul>
@@ -477,6 +477,37 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal" id="upload-confirm">上传</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearItem()">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="uploadImageModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="changePasswordModalLabel">
+                    修改密码
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <form id="changePassword-form" class="form">
+                <table class="table">
+                    <tr>
+                        <td><label>新密码</label></td>
+                        <td><input id="newPassword" type="password" class="form-control" name="password"></td>
+                    </tr>
+                    <tr>
+                        <td><label>确认密码</label></td>
+                        <td><input id="confirmPassword" type="password" class="form-control"></td>
+                    </tr>
+                </table>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="changePassword-confirm">确定修改</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearItem()">关闭</button>
             </div>
         </div><!-- /.modal-content -->

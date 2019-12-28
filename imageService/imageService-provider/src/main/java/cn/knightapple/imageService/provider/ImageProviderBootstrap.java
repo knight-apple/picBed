@@ -7,15 +7,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @EnableDubboConfig
 @EnableDubbo
-@EnableSpringConfigured
 @EnableApolloConfig
 @Configuration
 @SpringBootApplication
+@EnableJpaRepositories(basePackages = {"cn.knightapple.dataSource.dao"})
 //@SpringBootApplication
 //@EnableSpringDataWebSupport
 @ComponentScan(basePackages = {"cn.knightapple.dataSource.config"})

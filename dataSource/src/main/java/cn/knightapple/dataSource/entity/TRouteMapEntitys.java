@@ -13,6 +13,7 @@ public class TRouteMapEntitys implements Serializable {
     private Integer imageId;
 
     @Id
+    @org.springframework.data.annotation.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {

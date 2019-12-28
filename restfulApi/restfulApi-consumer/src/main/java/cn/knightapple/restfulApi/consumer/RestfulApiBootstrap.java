@@ -15,7 +15,8 @@ import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
 @SpringBootApplication(scanBasePackages = {
         "cn.knightapple.dataSource",
         "cn.knightapple.restfulApi.consumer"}
-        , exclude = {MultipartAutoConfiguration.class})
+//        , exclude = {MultipartAutoConfiguration.class}
+        )
 //        , exclude = {MultipartAutoConfiguration.class})
 @SpringBootConfiguration
 @EnableSpringConfigured

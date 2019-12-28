@@ -12,6 +12,7 @@ public class TGroupViewEntitys implements Serializable {
     private String groupName;
 
     @Id
+    @org.springframework.data.annotation.Id
     @Column(name = "groupId", nullable = false)
     public Integer getGroupId() {
         return groupId;

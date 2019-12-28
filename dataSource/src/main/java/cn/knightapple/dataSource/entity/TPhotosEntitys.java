@@ -14,6 +14,7 @@ public class TPhotosEntitys implements Serializable {
     private Integer securityGroupId;
 
     @Id
+    @org.springframework.data.annotation.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {

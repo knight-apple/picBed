@@ -6,19 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="fileService-provider" />
+        <module name="imageService-provider" />
         <module name="photo-interface" />
-        <module name="imageService-interface" />
         <module name="userService-provider" />
         <module name="fileService-interface" />
+        <module name="zkui (2)" />
         <module name="ui" />
         <module name="dataSource" />
-        <module name="restfulApi-consumer" />
-        <module name="photo-provider" />
-        <module name="WebSite" />
         <module name="userService-interface" />
-        <module name="imageService-provider" />
-        <module name="zkui (2)" />
+        <module name="WebSite" />
+        <module name="restfulApi-consumer" />
+        <module name="fileService-provider" />
+        <module name="imageService-interface" />
+        <module name="photo-provider" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -50,7 +50,6 @@
       <module name="dubbo-provider" target="1.8" />
       <module name="fileService-consumer" target="1.8" />
       <module name="nginx" target="1.8" />
-      <module name="photoService" target="1.8" />
       <module name="restfulApi-interface" target="1.8" />
       <module name="test" target="1.8" />
       <module name="test-consumer" target="1.8" />
@@ -83,7 +82,7 @@
       <module name="fileService" options="" />
       <module name="fileService-consumer" options="-parameters" />
       <module name="fileService-interface" options="-parameters" />
-      <module name="fileService-provider" options="-parameters" />
+      <module name="fileService-provider" options="-parameters -Xlint" />
       <module name="imageService-interface" options="-parameters" />
       <module name="imageService-provider" options="-parameters" />
       <module name="nginx" options="-parameters" />

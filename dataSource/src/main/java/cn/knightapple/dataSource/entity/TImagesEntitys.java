@@ -19,6 +19,7 @@ public class TImagesEntitys implements Serializable {
     private TUsersEntitys usersByUserId;
 
     @Id
+    @org.springframework.data.annotation.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {

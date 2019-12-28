@@ -16,6 +16,7 @@
     <script src="/layui.all.js"></script>
 </head>
 <script>
+
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
         var vars = query.split("&");
@@ -190,7 +191,7 @@
     <li class="layui-nav-item"><a href="home.html">首页</a></li>
     <li class="layui-nav-item layui-this"><a href="photo.html">相册</a></li>
     <!--    <li class="layui-nav-item"><a href="photo.html">安全组</a></li>-->
-    <li class="layui-nav-item"><a>上传图片</a></li>
+    <li class="layui-nav-item"><a data-toggle="modal" data-target="#uploadImageModal">上传图片</a></li>
 
     <li class="layui-nav-item float-lg-right mr-5">
         <a href="javascript:;">用户</a>
@@ -244,11 +245,71 @@
 <script src="/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
-    layui.use(['layer', 'form', 'element'], function () { //独立版的layer无需执行这一句
+    layui.use(['layer', 'form', 'element','upload'], function () { //独立版的layer无需执行这一句
         var $ = layui.jquery;
         var layer = layui.layer; //独立版的layer无需执行这一句
         var element = layui.element;
         var form = layui.form;
+        var upload = layui.upload;
+        upload.render({
+            elem: '#uploadFile',
+            url: 'http://172.16.56.7:8080/api/image/addImage',
+            auto: false,
+            data: {
+                title: function () {
+                    console.log($("#upload-title").val());
+                    return $("#upload-title").val();
+                },
+                intro: function () {
+                    console.log($("#upload-intro").val());
+                    return $("#upload-intro").val();
+                },
+                photoId: function () {
+                    console.log($("#upload_photoId").val());
+                    return $("#upload_photoId").val();
+                }
+            },
+            headers: {
+                Authorization: token
+            },
+            bindAction: "#upload-confirm",
+            choose:
+                function (obj) {
+                    console.log(obj);
+                    obj.preview(function (index, file, result) {
+                        $('#imageDemo').attr('src', result); //图片链接（base64）
+                    });
+                },
+            before: function (res) {
+                console.log(res)
+                return false;
+            },
+            done: function (res) {
+                if (res.code = 200) {
+                    // $("#imageList").html("");
+                    // pageNum = 1;
+                    // if (photoId == null) {
+                    //     loadImage(pageNum);
+                    // } else {
+                    //     loadImage(pageNum, photoId);
+                    // }
+                    // pageNum++;
+                    layer.msg("添加成功");
+                }
+            }
+
+            //,multiple: true
+            // , bindAction: function (res) {
+            //     console.log("bindAction");
+            //     console.log(res);
+            // }
+
+            // ,progress: function(n){
+            //     var percent = n + '%' //获取进度百分比
+            //     element.progress('demo', percent); //可配合 layui 进度条元素使用
+            // }
+
+        });
         var active = {
             tabAdd: function () {
                 //新增一个Tab项
@@ -370,6 +431,28 @@
         $("#add-referer-form").attr("bodyId", bodyId);
         clearItem();
     }
+    var loadPhoto = function () {
+        $.ajax({
+            type: "POST",
+            url: "http://172.16.56.7:8080/api/photo/getPhotoList",
+            headers: {
+                Authorization: token
+            },
+            success: function (result) {
+                data = result.data;
+                innerStr = "";
+                uploadStr = "";
+                for (i = 0; i < data.length; i++) {
+                    innerStr += '<a href="home.html?photoId=' + data[i].id + '">' + '<option>' + data[i].title + '</option></a>'
+                    uploadStr += "<option value='" + data[i].id + "'>" + data[i].title + "</option>"
+                }
+                console.log(innerStr);
+                $("#photoList").html(innerStr);
+                $("#upload_photoId").html(uploadStr);
+            }
+        });
+    }
+    loadPhoto();
 </script>
 <div class="modal fade" id="ItemAddModal" tabindex="-1" role="dialog" aria-labelledby="ItemAddModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -392,6 +475,41 @@
                 <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addReferer()">提交更改</button>
                 <button type="button" class="btn btn-warning" onclick="addItem()">新增</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearItem()">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal fade" id="uploadImageModal" tabindex="-1" role="dialog" aria-labelledby="uploadImageModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="uploadImageModalLabel">
+                    上传图片
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <form id="uploadFile-form" class="form">
+                <input id="upload-title" type="text" name="title" class="form-control" placeholder="标题"/>
+                <textarea id="upload-intro" name="title" class="form-control" placeholder="介绍"></textarea>
+                <select id="upload_photoId" class="form-control" name="photoId"></select>
+            </form>
+            <div class="modal-body ml-lg-5">
+                <div class="layui-upload-drag" id="uploadFile">
+                    <i class="layui-icon"></i>
+                    <p>点击上传，或将文件拖拽到此处</p>
+                </div>
+                <div class="layui-upload-list">
+                    <img class="layui-upload-img img-fluid w-50" id="imageDemo">
+                    <p id="demoText"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="upload-confirm">上传</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="">关闭</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->

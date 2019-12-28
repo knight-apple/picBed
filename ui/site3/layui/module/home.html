@@ -67,7 +67,7 @@
                 '            </div>\n' +
                 '            <div id="imageslist' + data[i].id + '" class="panel-collapse collapse in">\n' +
                 '                <div class="panel-body">\n' +
-                '                    <p>intro</p>\n' +
+                '                    <p>'+data[i].intro+'</p>\n' +
                 '                    <br/>\n' +
                 // '                    <form class="form-group ">\n' +
                 '                        <label>源地址</label>\n' +
@@ -367,7 +367,7 @@
         });
         loadPhoto();
 
-        var pageNum ;
+        var pageNum;
         $(function () {
             pageNum = 1;
             if (photoId == null) {
@@ -421,9 +421,9 @@
                 return false;
             },
             done: function (res) {
-                if(res.code=200){
+                if (res.code = 200) {
                     $("#imageList").html("");
-                    pageNum=1;
+                    pageNum = 1;
                     if (photoId == null) {
                         loadImage(pageNum);
                     } else {
@@ -444,8 +444,7 @@
             //     element.progress('demo', percent); //可配合 layui 进度条元素使用
             // }
 
-        })
-        ;
+        });
 
     });
 </script>

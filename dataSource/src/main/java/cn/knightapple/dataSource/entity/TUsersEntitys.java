@@ -17,6 +17,7 @@ public class TUsersEntitys implements Serializable {
     private String password;
     private Integer type;
     @Id
+    @org.springframework.data.annotation.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public Integer getId() {

@@ -14,6 +14,7 @@ public class TSecurityGroupEntitys implements Serializable {
     private String groupName;
 
     @Id
+    @org.springframework.data.annotation.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "itemId", nullable = false)
     public int getItemId() {

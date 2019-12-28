@@ -3,16 +3,11 @@ package cn.knightapple.imageService.provider;
 import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubboConfig;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
-import org.springframework.data.web.config.EnableSpringDataWebSupport;
-
-import javax.xml.ws.WebServiceProvider;
 
 
 @EnableDubboConfig

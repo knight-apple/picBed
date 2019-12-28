@@ -2,12 +2,8 @@ package cn.knightapple.imageService.service;
 
 import cn.knightapple.imageService.dto.ImageInfoDto;
 import cn.knightapple.imageService.dto.ImageSaveDto;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.image.BufferedImage;
 import java.util.List;
 
 public interface ImageService {
@@ -26,7 +22,7 @@ public interface ImageService {
 
     ImageInfoDto getImageInfoById(Integer imageId);
 
-    List<ImageInfoDto> getImageListByPhotoId(Integer photoId, Integer pageNum,Integer pageSize);
+    List<ImageInfoDto> getImageListByPhotoId(Integer photoId, Integer pageNum, Integer pageSize);
 
-    List<ImageInfoDto> getImageListByUserId(Integer userId, Integer pageNum,Integer pageSize);
+    List<ImageInfoDto> getImageListByUserId(Integer userId, Integer pageNum, Integer pageSize);
 }

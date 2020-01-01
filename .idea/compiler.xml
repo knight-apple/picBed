@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="imageService-provider" />
+        <module name="fileService-provider" />
         <module name="photo-interface" />
         <module name="userService-provider" />
         <module name="fileService-interface" />
@@ -16,7 +16,7 @@
         <module name="userService-interface" />
         <module name="WebSite" />
         <module name="restfulApi-consumer" />
-        <module name="fileService-provider" />
+        <module name="imageService-provider" />
         <module name="imageService-interface" />
         <module name="photo-provider" />
       </profile>

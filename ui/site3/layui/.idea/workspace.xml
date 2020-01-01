@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4dab7cc-c17e-4bf5-91ac-423369424ed1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/module/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/module/photo.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -204,7 +203,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="578" />
     <option name="y" value="144" />
     <option name="width" value="1440" />
@@ -278,12 +277,12 @@
       <option name="presentableId" value="Default" />
       <updated>1576833096670</updated>
       <workItem from="1576833097814" duration="57462000" />
-      <workItem from="1577517233672" duration="3132000" />
+      <workItem from="1577517233672" duration="3732000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60594000" />
+    <option name="totallyTimeSpent" value="61194000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -295,7 +294,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23733333" />

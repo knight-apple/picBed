@@ -134,9 +134,9 @@
                 if (result.code != 200)
                     return;
                 data = result.data;
-                innerStr = "";
+                innerStr1 = "";
                 for (i = 0; i < data.length; i++) {
-                    innerStr +=
+                    innerStr1 +=
                         '<div class="panel panel-default mt-5" id="p_'+data[i].id+'">\n' +
                         '            <div class="panel-heading">\n' +
                         '                <h4 class="panel-title">\n' +
@@ -159,7 +159,7 @@
                         '        </div>'
                 }
                 // console.log(innerStr);
-                $("#photoList").html(innerStr);
+                $("#photoList").html(innerStr1);
             }
         })
     }
@@ -431,7 +431,7 @@
         $("#add-referer-form").attr("bodyId", bodyId);
         clearItem();
     }
-    var loadPhoto = function () {
+    var loadPhotoList = function () {
         $.ajax({
             type: "POST",
             url: "http://172.16.56.7:8080/api/photo/getPhotoList",
@@ -440,19 +440,19 @@
             },
             success: function (result) {
                 data = result.data;
-                innerStr = "";
+                // innerStr = "";
                 uploadStr = "";
                 for (i = 0; i < data.length; i++) {
-                    innerStr += '<a href="home.html?photoId=' + data[i].id + '">' + '<option>' + data[i].title + '</option></a>'
+                    // innerStr += '<a href="home.html?photoId=' + data[i].id + '">' + '<option>' + data[i].title + '</option></a>'
                     uploadStr += "<option value='" + data[i].id + "'>" + data[i].title + "</option>"
                 }
-                console.log(innerStr);
-                $("#photoList").html(innerStr);
+                // console.log(innerStr);
+                // $("#photoList").html(innerStr);
                 $("#upload_photoId").html(uploadStr);
             }
         });
     }
-    loadPhoto();
+    loadPhotoList();
 </script>
 <div class="modal fade" id="ItemAddModal" tabindex="-1" role="dialog" aria-labelledby="ItemAddModalLabel" aria-hidden="true">
     <div class="modal-dialog">
